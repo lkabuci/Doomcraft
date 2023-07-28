@@ -40,5 +40,6 @@ endif()
 # Add any additional include directories if needed
 target_include_directories(cRay PRIVATE includes MLX42/include/MLX42)
 
-# Set compiler options (optional)
+# Set compiler options
+# TODO: add -Werror later
 target_compile_options(cRay PRIVATE -Wall -Wextra)

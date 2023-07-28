@@ -21,7 +21,7 @@ char	*get_next_line(int fd)
 	if (!stash)
 		stash = ft_strdup("");
 	line = read_line(fd, &stash, buffer);
-	free_ptr(&buffer);
+	free_ptr((void**)&buffer);
 	return (line);
 }
 
@@ -66,7 +66,7 @@ char	*read_line(int fd, char **stash, char *buffer)
 			return (join_line(readed, stash));
 		buffer[readed] = 0;
 		tmp = ft_strjoin(*stash, buffer);
-		free_ptr(stash);
+		free_ptr((void**)stash);
 		*stash = tmp;
 		nl = ft_strchr(*stash);
 	}

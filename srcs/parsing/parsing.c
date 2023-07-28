@@ -2,7 +2,7 @@
 // Created by redone on 7/27/23.
 //
 
-#include "mario.h"
+#include "cray.h"
 
 void    parse_elements(char *map_filename, t_map_info *info);
 

@@ -21,8 +21,8 @@ void    free_array(char **array)
         return;
     while (array[i])
     {
-        free_ptr(array[i]);
+        free_ptr((void **)&array[i]);
         i++;
     }
-    free_ptr(array);
+    free_ptr((void **)array);
 }
