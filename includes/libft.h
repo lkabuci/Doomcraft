@@ -24,5 +24,6 @@ char	*ft_substr(char *s, unsigned int start, size_t len);
 char *get_next_line(int fd);
 void    free_ptr(void **ptr);
 void    free_array(char **array);
+char	**ft_split(char *s, char c);
 
 #endif //MARIO3D_LIBFT_H
