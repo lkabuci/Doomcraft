@@ -6,6 +6,7 @@
 
 static char	*read_line(int fd, char **stash, char *buffer);
 static char	*join_line(int nl_position, char **stash);
+static char	*t_strchr(char *str);
 
 char	*get_next_line(int fd)
 {
@@ -56,7 +57,7 @@ char	*read_line(int fd, char **stash, char *buffer)
 	char	*tmp;
 	char	*nl;
 
-	nl = ft_strchr(*stash);
+	nl = t_strchr(*stash);
 	tmp = NULL;
 	readed = 0;
 	while (!nl)
@@ -68,7 +69,18 @@ char	*read_line(int fd, char **stash, char *buffer)
 		tmp = ft_strjoin(*stash, buffer);
 		free_ptr((void**)stash);
 		*stash = tmp;
-		nl = ft_strchr(*stash);
+		nl = t_strchr(*stash);
 	}
 	return (join_line(nl - *stash + 1, stash));
+}
+
+char	*t_strchr(char *str)
+{
+    while (*str != '\n')
+    {
+        if (*str == 0)
+            return (0);
+        str++;
+    }
+    return (str);
 }

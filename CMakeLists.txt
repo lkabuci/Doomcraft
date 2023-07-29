@@ -22,6 +22,13 @@ set(SOURCES
     srcs/libft/ft_calloc.c
     srcs/libft/ft_strchr.c
     srcs/libft/ft_split.c
+        srcs/parsing/utils.c
+        srcs/libft/ft_memset.c
+        srcs/libft/ft_memcpy.c
+        srcs/libft/ft_strcmp.c
+        srcs/libft/ft_atoi.c
+        srcs/libft/types.c
+        srcs/parsing/map_validity.c
 )
 
 # Create the executable target

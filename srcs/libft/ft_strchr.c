@@ -4,13 +4,17 @@
 
 #include "libft.h"
 
-char	*ft_strchr(char *str)
+char	*ft_strchr(char *s, int c)
 {
-	while (*str != '\n')
+	if (!s)
+		return (NULL);
+	while (*s)
 	{
-		if (*str == 0)
-			return (0);
-		str++;
+		if (*(char *)s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	return (str);
+	if (!c)
+		return ((char *)s);
+	return (0);
 }
