@@ -12,6 +12,16 @@ void    free_ptr(void **ptr)
     ptr = NULL;
 }
 
+int	ft_split_len(char **elements)
+{
+	int	i;
+
+	i = -1;
+	while (elements[++i])
+		;
+	return (i);
+}
+
 void    free_array(char **array)
 {
     int i;
@@ -24,5 +34,6 @@ void    free_array(char **array)
         free_ptr((void **)&array[i]);
         i++;
     }
-    free_ptr((void **)array);
+    free(array);
+    array = NULL;
 }

@@ -4,86 +4,85 @@
 
 #include "libft.h"
 
-static void	*free_all(char **tab, int i);
-static size_t	count_strings(char *str, char c);
-static char	*allocate_word(char *str, char c);
-static size_t	ft_strlen_sep(char *str, char c);
+static int	is_sep(char c, char *charset);
+static int	count_strings(char *str, char *charset);
+static int	ft_strlen_sep(char *str, char *charset);
+static char	*allocate_word(char *str, char *charset);
 
-char	**ft_split(char *s, char c)
+char	**ft_split(char *str, char *charset)
 {
-	char	**str;
-	size_t	i;
+	char	**strings;
+	int		i;
 
-	if (!s)
-		return (0);
 	i = 0;
-	str = (char **) ft_calloc(sizeof(char *) * (count_strings((char *)s, c) + 1));
-	while (*(char *)s)
+	strings = ft_calloc(sizeof(char *) * (count_strings(str, charset) + 1));
+	while (*str)
 	{
-		while (*(char *)s && *(char *)s == c)
-			s++;
-		if (*(char *)s)
+		while (*str && is_sep(*str, charset))
+			str++;
+		if (*str)
 		{
-			*(str + i) = allocate_word((char *)s, c);
-			if (!*(str + i))
-				return (free_all(str, i));
+			*(strings + i) = allocate_word(str, charset);
 			i++;
 		}
-		while (*(char *)s && *(char *)s != c)
-			s++;
+		while (*str && !is_sep(*str, charset))
+			str++;
 	}
-	*(str + i) = 0;
-	return (str);
+	*(strings + i) = 0;
+	return (strings);
 }
 
-static void	*free_all(char **tab, int i)
+static int	is_sep(char c, char *charset)
 {
-	while (i >= 0)
+	int	i;
+
+	i = 0;
+	while (*(charset + i))
 	{
-		free(tab[i]);
-		i--;
+		if (c == *(charset + i))
+			return (1);
+		i++;
 	}
-	free(tab);
-	return (NULL);
+	return (0);
 }
 
-static size_t	count_strings(char *str, char c)
+static int	count_strings(char *str, char *charset)
 {
-	size_t	i;
-	size_t	count;
+	int	i;
+	int	count;
 
 	count = 0;
 	i = 0;
 	while (*(str + i))
 	{
-		while (*(str + i) && *(str + i) == c)
+		while (*(str + i) && is_sep(*(str + i), charset))
 			i++;
 		if (*(str + i))
 			count++;
-		while (*(str + i) && *(str + i) != c)
+		while (*(str + i) && !is_sep(*(str + i), charset))
 			i++;
 	}
 	return (count);
 }
 
-static size_t	ft_strlen_sep(char *str, char c)
+static int	ft_strlen_sep(char *str, char *charset)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (*(str + i) && *(str + i) != c)
+	while (*(str + i) && !is_sep(*(str + i), charset))
 		i++;
 	return (i);
 }
 
-static char	*allocate_word(char *str, char c)
+static char	*allocate_word(char *str, char *charset)
 {
-	size_t	len_word;
-	size_t	i;
+	int		len_word;
+	int		i;
 	char	*word;
 
 	i = 0;
-	len_word = ft_strlen_sep(str, c);
+	len_word = ft_strlen_sep(str, charset);
 	word = (char *)ft_calloc(sizeof(char) * (len_word + 1));
 	while (i < len_word)
 	{
@@ -93,5 +92,3 @@ static char	*allocate_word(char *str, char c)
 	*(word + i) = '\0';
 	return (word);
 }
-
-

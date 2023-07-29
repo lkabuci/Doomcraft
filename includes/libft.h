@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <stdbool.h>
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 42
@@ -23,7 +24,11 @@ int	ft_strlen(char *str);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char *get_next_line(int fd);
 void    free_ptr(void **ptr);
+void*   ft_memset(void *b, int c, size_t len);
+void*   ft_memcpy(void *dst, const void *src, size_t n);
 void    free_array(char **array);
-char	**ft_split(char *s, char c);
+int	ft_strcmp(const char *s1, const char *s2);
+char	**ft_split(char *str, char *charset);
+int	ft_atoi(const char *str);
 
 #endif //MARIO3D_LIBFT_H
