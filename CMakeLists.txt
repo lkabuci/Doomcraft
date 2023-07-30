@@ -30,6 +30,8 @@ set(SOURCES
         srcs/libft/types.c
         srcs/parsing/map_validity.c
         srcs/libft/ft_strtrim.c
+        srcs/engine/raycasting.c
+        srcs/engine/hooks.c
 )
 
 # Create the executable target

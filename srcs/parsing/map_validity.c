@@ -14,29 +14,36 @@
 
 void check_borders(char *line);
 void check_wholes(t_map_info *pInfo, char **line, int row, int column);
+void setup_player(t_player *pPlayer, char direction, int row, int column);
 
 void check_map(t_map_info *pInfo, char **pString) {
     int i;
     int j;
-    bool isPlayerFound;
 
-    isPlayerFound = false;
     i = -1;
     while (pString[++i]) {
         j = -1;
         while (pString[i][++j]) {
             if (ft_strchr("01NEWS ", pString[i][j]) == NULL)
                 fatal("Map contains invalid characters");
-            if (ft_strchr("NEWS", pString[i][j]) != NULL) {
-                if (isPlayerFound == true)
-                    fatal("Map contains more than one player");
-                isPlayerFound = true;
-            }
+            if (ft_strchr("NEWS", pString[i][j]) != NULL)
+                setup_player(pInfo->seer->player, pString[i][j], i, j);
             check_borders(pString[i]);
             if (pString[i][j] == '0')
                 check_wholes(pInfo, pString, i, j);
         }
     }
+}
+
+void setup_player(t_player *pPlayer, char direction, int row, int column) {
+    static bool isPlayerFound = false;
+
+    if (isPlayerFound)
+        fatal("Map contains more than one player");
+    isPlayerFound = true;
+    pPlayer->x_pos = row;
+    pPlayer->y_pos = column;
+    pPlayer->first_view = direction;
 }
 
 void check_borders(char *line) {

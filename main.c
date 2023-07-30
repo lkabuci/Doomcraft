@@ -21,6 +21,8 @@ void print_map_data(t_map_info *pInfo)
     printf("map_2d:\n");
     for (int i = 0; i < pInfo->map_height; i++)
         printf("%s\n", pInfo->map_2d[i]);
+    printf("player (%i, %i)\n", pInfo->seer->player->x_pos, pInfo->seer->player->y_pos);
+    printf("%c\n", pInfo->map_2d[pInfo->seer->player->x_pos][pInfo->seer->player->y_pos]);
 }
 
 int main (int argc, const char *argv[])
@@ -33,6 +35,8 @@ int main (int argc, const char *argv[])
     initialize_all_variables(&seer);
     parsing(&seer, argv[1]);
     print_map_data(seer.map_info);
+    mlx_loop_hook(seer.mlx, process_mouvement, &seer);
+    mlx_loop(seer.mlx);
     clean_memory(&seer);
     return 0;
 }
@@ -50,6 +54,7 @@ void setup_window(t_seer *seer)
 
 void initialize_all_variables(t_seer *pSeer) {
     pSeer->map_info = ft_calloc(sizeof(t_map_info));
+    pSeer->player = ft_calloc(sizeof(t_player));
     pSeer->map_info->seer = pSeer;
     pSeer->map_info->east_image = NULL;
     pSeer->map_info->west_image = NULL;
