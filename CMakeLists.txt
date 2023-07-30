@@ -29,6 +29,7 @@ set(SOURCES
         srcs/libft/ft_atoi.c
         srcs/libft/types.c
         srcs/parsing/map_validity.c
+        srcs/libft/ft_strtrim.c
 )
 
 # Create the executable target

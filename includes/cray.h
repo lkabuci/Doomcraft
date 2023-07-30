@@ -49,7 +49,7 @@ int	ft_split_len(char **elements);
 void	skip_till_first_map_line(t_map_info *pInfo);
 
 // parsing/map_parsing.c
-bool is_map_valid(char **pString);
+void check_map(t_map_info *pInfo, char **pString);
 
 // Utils.c
 void    fatal(const char *msg);

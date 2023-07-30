@@ -81,8 +81,7 @@ void get_map_dimensions(t_map_info *pInfo) {
 void parse_map(t_map_info *pInfo) {
     skip_till_first_map_line(pInfo);
     fill_map(pInfo);
-    if (is_map_valid(pInfo->map_2d) == false)
-        fatal("Invalid map");
+    check_map(pInfo, pInfo->map_2d);
 }
 
 void fill_map(t_map_info *pInfo) {
