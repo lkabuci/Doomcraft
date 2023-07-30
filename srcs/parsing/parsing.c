@@ -22,10 +22,10 @@ void    parsing(t_seer *seer, const char *map_filename)
     parse_elements(seer->map_info);
     get_map_dimensions(seer->map_info);
     close(seer->map_info->fd);
-
     seer->map_info->fd = open(map_filename, O_RDONLY);
     parse_map(seer->map_info);
     close(seer->map_info->fd);
+    free_ptr((void **) &seer->map_info->ptr_saver);
 }
 
 void    parse_elements(t_map_info *info)

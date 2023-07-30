@@ -8,6 +8,21 @@ void initialize_all_variables(t_seer *pSeer);
 void    clean_memory(t_seer *pSeer);
 void setup_window(t_seer *seer);
 
+void print_map_data(t_map_info *pInfo)
+{
+    printf("map_width: %d\n", pInfo->map_width);
+    printf("map_height: %d\n", pInfo->map_height);
+    printf("ceil_color: %ld\n", pInfo->ceil_color);
+    printf("floor_color: %ld\n", pInfo->floor_color);
+    printf("north_image: %p\n", pInfo->north_image);
+    printf("south_image: %p\n", pInfo->south_image);
+    printf("east_image: %p\n", pInfo->east_image);
+    printf("west_image: %p\n", pInfo->west_image);
+    printf("map_2d:\n");
+    for (int i = 0; i < pInfo->map_height; i++)
+        printf("%s\n", pInfo->map_2d[i]);
+}
+
 int main (int argc, const char *argv[])
 {
     t_seer seer;
@@ -17,8 +32,7 @@ int main (int argc, const char *argv[])
     setup_window(&seer);
     initialize_all_variables(&seer);
     parsing(&seer, argv[1]);
-    for (int i = 0; i < seer.map_info->map_height; i++)
-        printf("%s\n", seer.map_info->map_2d[i]);
+    print_map_data(seer.map_info);
     clean_memory(&seer);
     return 0;
 }
