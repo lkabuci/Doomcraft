@@ -9,7 +9,7 @@ void    free_ptr(void **ptr)
     if (*ptr == NULL)
         return;
     free(*ptr);
-    ptr = NULL;
+    *ptr = NULL;
 }
 
 int	ft_split_len(char **elements)
@@ -31,7 +31,8 @@ void    free_array(char **array)
         return;
     while (array[i])
     {
-        free_ptr((void **)&array[i]);
+        free(array[i]);
+        array[i] = NULL;
         i++;
     }
     free(array);

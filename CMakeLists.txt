@@ -32,6 +32,12 @@ set(SOURCES
         srcs/libft/ft_strtrim.c
         srcs/engine/raycasting.c
         srcs/engine/hooks.c
+        freeing.c
+        srcs/engine/render.c
+        srcs/engine/shapes.c
+        srcs/vectors/operation.c
+        srcs/vectors/normalize.c
+        srcs/libft/ft_strnstr.c
 )
 
 # Create the executable target

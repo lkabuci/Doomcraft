@@ -16,23 +16,39 @@ void check_borders(char *line);
 void check_wholes(t_map_info *pInfo, char **line, int row, int column);
 void setup_player(t_player *pPlayer, char direction, int row, int column);
 
+// TODO: check more tests
+void check_filename(const char* filename)
+{
+    int len;
+    char *extension;
+
+    len = ft_strlen((char*)filename);
+    extension = ft_strnstr((char *)filename, ".cub", len);
+    if (extension == NULL || ft_strcmp(extension, ".cub") != 0)
+        fatal("Invalid file extension");
+}
+
 void check_map(t_map_info *pInfo, char **pString) {
     int i;
     int j;
 
     i = -1;
-    while (pString[++i]) {
+    while (pString[++i])
+    {
         j = -1;
-        while (pString[i][++j]) {
+        while (pString[i][++j])
+        {
             if (ft_strchr("01NEWS ", pString[i][j]) == NULL)
                 fatal("Map contains invalid characters");
             if (ft_strchr("NEWS", pString[i][j]) != NULL)
-                setup_player(pInfo->seer->player, pString[i][j], i, j);
+                setup_player(&pInfo->seer->player, pString[i][j], i, j);
             check_borders(pString[i]);
             if (pString[i][j] == '0')
                 check_wholes(pInfo, pString, i, j);
         }
     }
+    if (pInfo->seer->player.first_view == 0)
+        fatal("Map doesn't contain player");
 }
 
 void setup_player(t_player *pPlayer, char direction, int row, int column) {
