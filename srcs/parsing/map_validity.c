@@ -13,17 +13,20 @@
  */
 
 void check_borders(char *line);
+
 void check_wholes(t_map_info *pInfo, char **line, int row, int column);
+
 void setup_player(t_player *pPlayer, char direction, int row, int column);
 
+void setup_player_direction(t_player *pPlayer, char direction);
+
 // TODO: check more tests
-void check_filename(const char* filename)
-{
+void check_filename(const char *filename) {
     int len;
     char *extension;
 
-    len = ft_strlen((char*)filename);
-    extension = ft_strnstr((char *)filename, ".cub", len);
+    len = ft_strlen((char *) filename);
+    extension = ft_strnstr((char *) filename, ".cub", len);
     if (extension == NULL || ft_strcmp(extension, ".cub") != 0)
         fatal("Invalid file extension");
 }
@@ -33,11 +36,9 @@ void check_map(t_map_info *pInfo, char **pString) {
     int j;
 
     i = -1;
-    while (pString[++i])
-    {
+    while (pString[++i]) {
         j = -1;
-        while (pString[i][++j])
-        {
+        while (pString[i][++j]) {
             if (ft_strchr("01NEWS ", pString[i][j]) == NULL)
                 fatal("Map contains invalid characters");
             if (ft_strchr("NEWS", pString[i][j]) != NULL)
@@ -57,9 +58,27 @@ void setup_player(t_player *pPlayer, char direction, int row, int column) {
     if (isPlayerFound)
         fatal("Map contains more than one player");
     isPlayerFound = true;
-    pPlayer->x_pos = row;
-    pPlayer->y_pos = column;
+    pPlayer->position.x = row;
+    pPlayer->position.y = column;
     pPlayer->first_view = direction;
+    setup_player_direction(pPlayer, direction);
+}
+
+// TODO: Play with these values to get the right result
+void setup_player_direction(t_player *pPlayer, char direction) {
+    if (direction == 'N') {
+        pPlayer->direction = (t_vector) {-1.0, 0.0, 0};
+        pPlayer->seer->camera.plane = (t_vector) {0.0, 0.66, 0};
+    } else if (direction == 'E') {
+        pPlayer->direction = (t_vector) {0.0, 1.0, 0};
+        pPlayer->seer->camera.plane = (t_vector) {0.66, 0, 0};
+    } else if (direction == 'W') {
+        pPlayer->direction = (t_vector) {0.0, -1.0, 0};
+        pPlayer->seer->camera.plane = (t_vector) {-0.66, 0, 0};
+    } else if (direction == 'S') {
+        pPlayer->direction = (t_vector) {1.0, 0.0, 0};
+        pPlayer->seer->camera.plane = (t_vector) {0.0, -0.66, 0};
+    }
 }
 
 void check_borders(char *line) {

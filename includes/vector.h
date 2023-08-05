@@ -8,11 +8,17 @@
 #include "math.h"
 
 typedef struct s_vector t_vector;
+typedef struct s_point t_point;
 
 struct s_vector {
     double x;
     double y;
     double z;
+};
+
+struct s_point {
+    int x;
+    int y;
 };
 
 t_vector v_new(double x, double y, double z);

@@ -4,7 +4,7 @@
 
 #include "cray.h"
 
-void process_mouvement(void *params)
+void process_movement(void *params)
 {
     t_seer *seer;
 
