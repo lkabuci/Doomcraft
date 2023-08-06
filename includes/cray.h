@@ -60,6 +60,8 @@ struct s_ray {
     t_vector position;
     t_vector direction;
     t_vector delta_dist;
+    t_point step;
+    t_vector side_distance;
 };
 
 struct s_seer {
@@ -71,6 +73,9 @@ struct s_seer {
     t_camera camera;
     t_texture texture;
 };
+
+void calculate_delta_offsets(t_ray *ray);
+void calculate_initial_side_distances(t_ray *pRay, t_vector *pPosition, t_point *pMap);
 
 // parsing/parsing.c
 void parsing(t_seer *seer, const char *map_filename);

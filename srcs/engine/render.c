@@ -8,6 +8,7 @@ void draw_player(t_seer *pSeer);
 
 void draw_floor_and_ceiling(t_seer *pSeer);
 
+
 void render(void *param) {
     t_seer *seer = (t_seer *) param;
 //    draw_floor_and_ceiling(seer);
@@ -19,10 +20,14 @@ void render(void *param) {
         seer->ray.direction.y = seer->player.direction.y + seer->camera.plane.y * seer->camera.camera_x;
         seer->camera.map.x = (int) seer->player.position.x;
         seer->camera.map.y = (int) seer->player.position.y;
-        seer->ray.delta_dist.x = fabs(1 / seer->ray.direction.x);
-        seer->ray.delta_dist.y = fabs(1 / seer->ray.direction.y);
+
+        calculate_delta_offsets(&seer->ray);
+        calculate_initial_side_distances(&seer->ray, &seer->player.position, &seer->camera.map);
+
 
         // Phase 2: Calculate step and initial sideDist
+
+
     }
 
     draw_player(seer);
@@ -40,5 +45,4 @@ void draw_floor_and_ceiling(t_seer *pSeer) {
 }
 
 void draw_player(t_seer *pSeer) {
-    (void) pSeer;
 }

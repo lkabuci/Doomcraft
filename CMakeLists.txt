@@ -38,6 +38,7 @@ set(SOURCES
         srcs/vectors/operation.c
         srcs/vectors/normalize.c
         srcs/libft/ft_strnstr.c
+        srcs/engine/intersection.c
 )
 
 # Create the executable target
