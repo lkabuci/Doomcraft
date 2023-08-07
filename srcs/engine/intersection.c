@@ -52,3 +52,35 @@ void calculate_initial_side_distances(t_ray *pRay, t_vector *pPosition, t_point 
         pRay->side_distance.y = (pMap->y + 1.0 - pPosition->y) * pRay->delta_dist.y;
     }
 }
+
+void hit_wall(t_seer *pSeer, int *side) {
+
+    while (true) {
+        if (pSeer->ray.side_distance.x < pSeer->ray.side_distance.y) {
+            pSeer->ray.side_distance.x += pSeer->ray.delta_dist.x;
+            pSeer->camera.map.x += pSeer->ray.step.x;
+            // texture side
+            *side = 0;
+        } else {
+            pSeer->ray.side_distance.y += pSeer->ray.delta_dist.y;
+            pSeer->camera.map.y += pSeer->ray.step.y;
+            // texture side
+            *side = 1;
+        }
+        if (pSeer->map_info->map_2d[pSeer->camera.map.x][pSeer->camera.map.y] == '1')
+            break;
+    }
+}
+
+void calculate_wall_height(t_seer *pSeer, int side) {
+    pSeer->ray.perp_wall_dist = (pSeer->ray.side_distance.y - pSeer->ray.delta_dist.y);
+    if (side == 0)
+        pSeer->ray.perp_wall_dist = (pSeer->ray.side_distance.x - pSeer->ray.delta_dist.x);
+    pSeer->line.line_height = (int) (WIN_HEIGHT / pSeer->ray.perp_wall_dist);
+    pSeer->line.draw_start = -pSeer->line.line_height / 2 + WIN_HEIGHT / 2;
+    if (pSeer->line.draw_start < 0)
+        pSeer->line.draw_start = 0;
+    pSeer->line.draw_end = pSeer->line.line_height / 2 + WIN_HEIGHT / 2;
+    if (pSeer->line.draw_end >= WIN_HEIGHT)
+        pSeer->line.draw_end = WIN_HEIGHT - 1;
+}

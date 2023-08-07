@@ -21,6 +21,7 @@ typedef struct s_map_info t_map_info;
 typedef struct s_texture t_texture;
 typedef struct s_camera t_camera;
 typedef struct s_ray t_ray;
+typedef struct s_line t_line;
 
 struct s_map_info {
     mlx_image_t *north_image;
@@ -39,6 +40,7 @@ struct s_map_info {
 
 struct s_texture {
     unsigned int **buffer;
+    int side;
     // TODO: add extra textures variables
 };
 
@@ -62,6 +64,13 @@ struct s_ray {
     t_vector delta_dist;
     t_point step;
     t_vector side_distance;
+    double perp_wall_dist;
+};
+
+struct s_line {
+    int line_height;
+    int draw_start;
+    int draw_end;
 };
 
 struct s_seer {
@@ -71,11 +80,17 @@ struct s_seer {
     t_ray ray;
     t_player player;
     t_camera camera;
+    t_line line;
     t_texture texture;
 };
 
+void hit_wall(t_seer *pSeer, int *side);
+
 void calculate_delta_offsets(t_ray *ray);
+
 void calculate_initial_side_distances(t_ray *pRay, t_vector *pPosition, t_point *pMap);
+
+void calculate_wall_height(t_seer *pSeer, int side);
 
 // parsing/parsing.c
 void parsing(t_seer *seer, const char *map_filename);
