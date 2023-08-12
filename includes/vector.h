@@ -13,7 +13,6 @@ typedef struct s_point t_point;
 struct s_vector {
     double x;
     double y;
-    double z;
 };
 
 struct s_point {
@@ -21,7 +20,7 @@ struct s_point {
     int y;
 };
 
-t_vector v_new(double x, double y, double z);
+t_vector v_new(double x, double y);
 double v_magnitude(t_vector v);
 t_vector v_normalize(t_vector v);
 

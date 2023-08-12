@@ -39,6 +39,7 @@ set(SOURCES
         srcs/vectors/normalize.c
         srcs/libft/ft_strnstr.c
         srcs/engine/intersection.c
+        srcs/inits.c
 )
 
 # Create the executable target
@@ -59,4 +60,4 @@ target_include_directories(cRay PRIVATE includes MLX42/include/MLX42)
 
 # Set compiler options
 # TODO: add -Werror later
-target_compile_options(cRay PRIVATE -Wall -Wextra)
+target_compile_options(cRay PRIVATE -Wall -Wextra -Werror)

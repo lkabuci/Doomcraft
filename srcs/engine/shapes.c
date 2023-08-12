@@ -34,52 +34,6 @@ void	draw_line(mlx_image_t *image, t_vector p0, t_vector p1, unsigned int color)
 	}
 }
 
-void	draw_circle(mlx_image_t *image, t_vector p, int size, uint32_t color)
-{
-	int			i;
-	int			j;
-	int			radius;
-	t_vector	    c;
-	t_vector	    d;
-
-	i = (int)p.x - 1;
-	radius = size / 2;
-	c.x = (int)p.x + radius;
-	c.y = (int)p.y + radius;
-	while (++i < (int)p.x + size)
-	{
-		j = (int)p.y - 1;
-		while (++j < (int)p.y + size)
-		{
-			d.x = i - (int)c.x;
-			d.y = j - (int)c.y;
-			if ((int)d.x * (int)d.x + (int)d.y * (int)d.y <= radius * radius)
-				mlx_put_pixel(image, i, j, color);
-		}
-	}
-}
-
-void	draw_square(mlx_image_t *image, t_vector p, int size, uint32_t color)
-{
-	int	x_end;
-	int	y_end;
-	int	j;
-
-	x_end = (int)p.x + size;
-	y_end = (int)p.y + size;
-	j = (int)p.y;
-	while ((int)p.x < x_end)
-	{
-		p.y = j;
-		while ((int)p.y < y_end)
-		{
-			mlx_put_pixel(image, (int)p.x, (int)p.y, color);
-			p.y++;
-		}
-		p.x++;
-	}
-}
-
 static void	init_line_values(t_vector *inc, t_vector p0, t_vector p1, t_vector *delta)
 {
 	delta->x = +abs((int)p1.x - (int)p0.x);

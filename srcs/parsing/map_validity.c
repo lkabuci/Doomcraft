@@ -67,17 +67,17 @@ void setup_player(t_player *pPlayer, char direction, int row, int column) {
 // TODO: Play with these values to get the right result
 void setup_player_direction(t_player *pPlayer, char direction) {
     if (direction == 'N') {
-        pPlayer->direction = (t_vector) {-1.0, 0.0, 0};
-        pPlayer->seer->camera.plane = (t_vector) {0.0, 0.66, 0};
+        pPlayer->direction = (t_vector) {-1.0, 0.0};
+        pPlayer->seer->camera.plane = (t_vector) {0.0, 0.66};
     } else if (direction == 'E') {
-        pPlayer->direction = (t_vector) {0.0, 1.0, 0};
-        pPlayer->seer->camera.plane = (t_vector) {0.66, 0, 0};
+        pPlayer->direction = (t_vector) {0.0, 1.0};
+        pPlayer->seer->camera.plane = (t_vector) {0.66, 0};
     } else if (direction == 'W') {
-        pPlayer->direction = (t_vector) {0.0, -1.0, 0};
-        pPlayer->seer->camera.plane = (t_vector) {-0.66, 0, 0};
+        pPlayer->direction = (t_vector) {0.0, -1.0};
+        pPlayer->seer->camera.plane = (t_vector) {-0.66, 0};
     } else if (direction == 'S') {
-        pPlayer->direction = (t_vector) {1.0, 0.0, 0};
-        pPlayer->seer->camera.plane = (t_vector) {0.0, -0.66, 0};
+        pPlayer->direction = (t_vector) {1.0, 0.0};
+        pPlayer->seer->camera.plane = (t_vector) {0.0, -0.66};
     }
 }
 

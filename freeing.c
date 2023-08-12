@@ -7,13 +7,13 @@
 void    clean_memory(t_seer *pSeer)
 {
     // all allocated memory should be freed here
-    mlx_delete_image(pSeer->mlx, pSeer->map_info->north_image);
-    mlx_delete_image(pSeer->mlx, pSeer->map_info->south_image);
-    mlx_delete_image(pSeer->mlx, pSeer->map_info->east_image);
-    mlx_delete_image(pSeer->mlx, pSeer->map_info->west_image);
-    for (int i = 0; i < pSeer->map_info->map_height; i++)
-        free_ptr((void **)&pSeer->map_info->map_2d[i]);
-    free_ptr((void **)pSeer->map_info->map_2d);
+    mlx_delete_image(pSeer->mlx, pSeer->map_info.north_image);
+    mlx_delete_image(pSeer->mlx, pSeer->map_info.south_image);
+    mlx_delete_image(pSeer->mlx, pSeer->map_info.east_image);
+    mlx_delete_image(pSeer->mlx, pSeer->map_info.west_image);
+    for (int i = 0; i < pSeer->map_info.map_height; i++)
+        free_ptr((void **)&pSeer->map_info.map_2d[i]);
+    free_ptr((void **)pSeer->map_info.map_2d);
     free_ptr((void **)&pSeer->map_info);
 
 //    for (int i = 0; i < WIN_HEIGHT; i++)
@@ -23,22 +23,7 @@ void    clean_memory(t_seer *pSeer)
     mlx_close_window(pSeer->mlx);
 }
 
-void initialize_all_variables(t_seer *pSeer)
-{
-    pSeer->map_info = ft_calloc(sizeof(t_map_info));
-    pSeer->map_info->seer = pSeer;
-    pSeer->map_info->east_image = NULL;
-    pSeer->map_info->west_image = NULL;
-    pSeer->map_info->north_image = NULL;
-    pSeer->map_info->south_image = NULL;
-    pSeer->map_info->map_width = -1;
-    pSeer->map_info->ceil_color = -1;
-    pSeer->map_info->map_height = 1;
-    pSeer->map_info->floor_color = -1;
-    pSeer->map_info->map_2d = NULL;
-    pSeer->map_info->ptr_saver = NULL;
-    pSeer->player.seer = pSeer;
-}
+
 
 void print_map_data(t_map_info *pInfo)
 {
