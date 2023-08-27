@@ -26,7 +26,7 @@ OBJS_DIRS   = $(dir $(OBJS))
 
 INCLUDES	=	includes/libft.h includes/srcs.h
 
-NAME		=	cub3D
+NAME		=	cRay
 
 all: $(NAME)
 
