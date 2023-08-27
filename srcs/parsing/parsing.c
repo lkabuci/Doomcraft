@@ -2,31 +2,31 @@
 // Created by redone on 7/27/23.
 //
 
-#include "cray.h"
+#include "../../includes/srcs.h"
 
-void parse_elements(t_map_info *info);
-void fill_elements(mlx_t *mlx, t_map_info *pInfo, char *key, char *value);
-mlx_image_t *get_texture(mlx_t *pMlx, char *path);
-long get_rgb(char *value);
-u_int32_t get_color(const int *rgb);
-bool check_commas(const char *str);
-void parse_map(t_map_info *pInfo);
-void get_map_dimensions(t_map_info *pInfo);
-void fill_map(t_map_info *pInfo);
+void            parse_elements(t_map_info *info);
+void            fill_elements(mlx_t *mlx, t_map_info *pInfo, char *key, char *value);
+mlx_image_t     *get_texture(mlx_t *pMlx, char *path);
+long            get_rgb(char *value);
+u_int32_t       get_color(const int *rgb);
+bool            check_commas(const char *str);
+void            parse_map(t_map_info *pInfo);
+void            get_map_dimensions(t_map_info *pInfo);
+void            fill_map(t_map_info *pInfo);
 
-void parsing(t_seer *seer, const char *map_filename)
+void parsing(t_seer *seer, const char *filename)
 {
-    check_filename(map_filename);
-    seer->map_info.fd = open(map_filename, O_RDONLY);
+    check_filename(filename);
+    seer->map_info.fd = open(filename, O_RDONLY);
     if (seer->map_info.fd == -1)
         fatal("Can't open the file");
     parse_elements(&seer->map_info);
     get_map_dimensions(&seer->map_info);
     close(seer->map_info.fd);
-    seer->map_info.fd = open(map_filename, O_RDONLY);
+    seer->map_info.fd = open(filename, O_RDONLY);
     parse_map(&seer->map_info);
     close(seer->map_info.fd);
-    free_ptr((void **) &seer->map_info.ptr_saver);
+    free(seer->map_info.ptr_saver);
 }
 
 void parse_elements(t_map_info *info)
@@ -35,17 +35,17 @@ void parse_elements(t_map_info *info)
     char **elements;
     char *line;
     i = -1;
-    while (++i < NBR_OF_ELEMENTS)
+    while (++i < NBROF_ELEMENTS)
     {
         line = readline(info->fd);
         if (line == NULL)
             break;
         elements = ft_split(line, SPACES);
         if (ft_split_len(elements) != 2)
-            fatal("Invalid map elements");
+            fatal("Invalid map_info elements");
         fill_elements(info->seer->mlx, info, elements[0], elements[1]);
-        free_ptr((void **) &line);
-        free_array(elements);
+        free(line);
+        free_split(elements);
     }
     info->ptr_saver = readline(info->fd);
 }
@@ -56,7 +56,7 @@ void get_map_dimensions(t_map_info *pInfo)
     int line_len;
     char *rest_map;
     if (!pInfo->ptr_saver)
-        fatal("Invalid map !!");
+        fatal("Invalid map_info !!");
     pInfo->map_width = ft_strlen(pInfo->ptr_saver) - 1;
     while (true)
     {
@@ -74,7 +74,7 @@ void get_map_dimensions(t_map_info *pInfo)
     if (rest_map != NULL)
     {
         free(rest_map);
-        fatal("elements after map");
+        fatal("elements after map_info");
     }
 }
 
@@ -144,7 +144,7 @@ long get_rgb(char *value)
             fatal("invalid rgb");
     }
     color = get_color(rgb_arr);
-    free_array(elements);
+    free_split(elements);
     free(rgb_arr);
     return (color);
 }

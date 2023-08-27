@@ -2,7 +2,7 @@
 // Created by redone on 7/28/23.
 //
 
-#include "cray.h"
+#include "../../includes/srcs.h"
 
 static bool	is_all_spaces(const char *line);
 
