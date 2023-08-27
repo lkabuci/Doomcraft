@@ -22,9 +22,16 @@ The [MLX42](https://github.com/codam-coding-college/MLX42) is a minimal graphica
 ```
 
 ## Compile and run:
+* Using Cmake
 ```bash
-cmake -B cmake-build-debug
-cd cmake-build-debug
-make -C cmake-build-debug
-./cmake-build-debug/cRay assets/maps/map.cub
+➜  ~ cmake -B cmake-build-debug
+➜  ~ cd cmake-build-debug
+➜  ~ make -C cmake-build-debug
+➜  ~ ./cmake-build-debug/cRay assets/maps/map.cub
+```
+
+* Using Makfile
+```bash
+➜  ~ make
+➜  ~ ./cRay assets/maps/map.cub
 ```
