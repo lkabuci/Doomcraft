@@ -2,20 +2,34 @@
 // Created by redone on 7/27/23.
 //
 
-#include "cray.h"
+#include "includes/srcs.h"
 
 int main(int argc, const char *argv[])
 {
-    t_seer seer;
+	t_seer	var;
 
-    if (argc != 2)
-        fatal("Usage: ./cub3d <map.cub>");
-    setup_window(&seer);
-    initialize_all_variables(&seer);
-    parsing(&seer, argv[1]);
-    mlx_loop_hook(seer.mlx, process_movement, &seer);
-    mlx_loop_hook(seer.mlx, render, &seer);
-    mlx_loop(seer.mlx);
-    clean_memory(&seer);
-    return 0;
+	if (argc != 2)
+		fatal("Usage: ./cub3D <map_2d.cub>\n");
+	init_window(&var);
+	parsing(&var, argv[1]);
+	init(&var);
+	mlx_loop_hook(var.mlx, move_hook, &var);
+	mlx_loop_hook(var.mlx, draw_hook, &var);
+	mlx_loop(var.mlx);
+	mlx_terminate(var.mlx);
+	return (EXIT_SUCCESS);
+}
+
+void	end_game(t_seer *pSeer)
+{
+	int	i;
+
+	i = -1;
+	free_split(pSeer->map_info.map_2d);
+	mlx_delete_image(pSeer->mlx, pSeer->image);
+	mlx_close_window(pSeer->mlx);
+	while (++i < SCREEN_HEIGHT)
+		free(pSeer->texture.buffer[i]);
+	free(pSeer->texture.buffer);
+	exit(0);
 }
