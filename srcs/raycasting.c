@@ -1,24 +1,18 @@
 #include "../includes/cray.h"
 
-void	resetting_ray(t_seer *pSeer, t_camera *pCamera, int xPixel)
+void	position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel)
 {
     pSeer->dda.iter = 2 * xPixel / (double)SCREEN_WIDTH - 1;
     pCamera->direction.x = pSeer->player.direction.x + pSeer->camera.plane.x * pSeer->dda.iter;
     pCamera->direction.y = pSeer->player.direction.y + pSeer->camera.plane.y * pSeer->dda.iter;
     pCamera->map_x = (int)pSeer->player.position.x;
     pCamera->map_y = (int)pSeer->player.position.y;
-	if (pCamera->direction.x == 0)
-        pSeer->dda.delta_distance.x = 1.0;
-	else
-        pSeer->dda.delta_distance.x = fabs(1 / pCamera->direction.x);
-	if (pCamera->direction.y == 0)
-        pSeer->dda.delta_distance.y = 1.0;
-	else
-        pSeer->dda.delta_distance.y = fabs(1 / pCamera->direction.y);
 }
 
-void	set_step_and_side_distances(t_seer *pSeer, t_camera *pCamera)
+void	calculate_offsets(t_seer *pSeer, t_camera *pCamera)
 {
+    pSeer->dda.delta_distance.y = fabs(1 / pCamera->direction.y);
+    pSeer->dda.delta_distance.x = fabs(1 / pCamera->direction.x);
 	if (pCamera->direction.x < 0)
 	{
         pSeer->dda.step_x = -1;
@@ -41,7 +35,7 @@ void	set_step_and_side_distances(t_seer *pSeer, t_camera *pCamera)
 	}
 }
 
-void	cast_ray_till_wall(t_seer *pSeer, t_camera *pCamera, int *side)
+void	dda(t_seer *pSeer, t_camera *pCamera, int *side)
 {
 	while (true)
 	{
@@ -62,7 +56,7 @@ void	cast_ray_till_wall(t_seer *pSeer, t_camera *pCamera, int *side)
 	}
 }
 
-void	calculate_line_properties(t_seer *pSeer, t_camera *pCamera, int side)
+void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
 {
     pCamera->wall_distance = (pSeer->dda.side_distance.y - pSeer->dda.delta_distance.y);
 	if (side == 0)

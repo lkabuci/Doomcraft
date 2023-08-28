@@ -1,6 +1,6 @@
 #include "../includes/cray.h"
 
-void	set_texture_params(t_seer *pSeer)
+void	set_texture_params(t_seer *pSeer, int xPixel)
 {
 	double	wall_x;
 
@@ -17,6 +17,7 @@ void	set_texture_params(t_seer *pSeer)
     pSeer->texture.step = 1.0 * CUBE_SIZE / pSeer->vertline.height;
     pSeer->texture.pos = (pSeer->vertline.start - SCREEN_HEIGHT / 2
                           + pSeer->vertline.height / 2) * pSeer->texture.step;
+    fill_texture_buffer(pSeer, xPixel, pSeer->vertline.start, pSeer->vertline.end);
 }
 
 void	set_env(t_seer *pSeer)
