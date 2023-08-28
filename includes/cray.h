@@ -7,8 +7,6 @@
 
 // WINDOW
 # define CUBE_SIZE 64
-# define WIN_HEIGHT 512
-# define WIN_WIDTH 1024
 # define SCREEN_WIDTH 1024
 # define SCREEN_HEIGHT 512
 

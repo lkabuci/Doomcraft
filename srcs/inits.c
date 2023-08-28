@@ -12,8 +12,8 @@ void	init_window(t_seer *pSeer)
 		fatal(mlx_strerror(mlx_errno));
 	}
 	mlx_set_cursor_mode(pSeer->mlx, MLX_MOUSE_HIDDEN);
-	mlx_set_window_limit(pSeer->mlx, WIN_WIDTH, WIN_HEIGHT, WIN_WIDTH,
-                         WIN_HEIGHT);
+	mlx_set_window_limit(pSeer->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH,
+                         SCREEN_HEIGHT);
     initialize_all_variables(pSeer);
 }
 
