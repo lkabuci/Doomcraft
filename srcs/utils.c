@@ -1,4 +1,4 @@
-#include "../includes/srcs.h"
+#include "../includes/cray.h"
 
 uint32_t	get_image_color(mlx_image_t *image, t_point p)
 {

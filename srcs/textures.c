@@ -1,4 +1,4 @@
-#include "../includes/srcs.h"
+#include "../includes/cray.h"
 
 void	set_texture_params(t_seer *pSeer)
 {
@@ -14,9 +14,9 @@ void	set_texture_params(t_seer *pSeer)
         pSeer->texture.tex_x = CUBE_SIZE - pSeer->texture.tex_x - 1;
 	if (pSeer->texture.side == 1 && pSeer->camera.direction.y < 0)
         pSeer->texture.tex_x = CUBE_SIZE - pSeer->texture.tex_x - 1;
-    pSeer->texture.step = 1.0 * CUBE_SIZE / pSeer->line.height;
-    pSeer->texture.pos = (pSeer->line.start - SCREEN_HEIGHT / 2
-                          + pSeer->line.height / 2) * pSeer->texture.step;
+    pSeer->texture.step = 1.0 * CUBE_SIZE / pSeer->vertline.height;
+    pSeer->texture.pos = (pSeer->vertline.start - SCREEN_HEIGHT / 2
+                          + pSeer->vertline.height / 2) * pSeer->texture.step;
 }
 
 void	set_env(t_seer *pSeer)

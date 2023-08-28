@@ -2,7 +2,7 @@
 // Created by redone on 7/27/23.
 //
 
-#include "../../includes/srcs.h"
+#include "../../includes/cray.h"
 
 void            parse_elements(t_map_info *info);
 void            fill_elements(mlx_t *mlx, t_map_info *pInfo, char *key, char *value);
@@ -45,7 +45,7 @@ void parse_elements(t_map_info *info)
             fatal("Invalid map_info elements");
         fill_elements(info->seer->mlx, info, elements[0], elements[1]);
         free(line);
-        free_split(elements);
+        free_array(elements);
     }
     info->ptr_saver = readline(info->fd);
 }
@@ -144,7 +144,7 @@ long get_rgb(char *value)
             fatal("invalid rgb");
     }
     color = get_color(rgb_arr);
-    free_split(elements);
+    free_array(elements);
     free(rgb_arr);
     return (color);
 }

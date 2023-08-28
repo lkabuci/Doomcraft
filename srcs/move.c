@@ -1,4 +1,4 @@
-#include "../includes/srcs.h"
+#include "../includes/cray.h"
 
 static bool	can_move(char block);
 

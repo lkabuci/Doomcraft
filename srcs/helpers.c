@@ -1,7 +1,7 @@
 
-#include "../includes/srcs.h"
+#include "../includes/cray.h"
 
-void	free_split(char **split)
+void	free_array(char **split)
 {
 	int	i;
 

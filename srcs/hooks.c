@@ -1,4 +1,4 @@
-#include "../includes/srcs.h"
+#include "../includes/cray.h"
 
 void	move_hook(void *param)
 {
@@ -38,8 +38,8 @@ void	draw_hook(void *args)
 		cast_ray_till_wall(seer, &seer->camera, &seer->texture.side);
 		calculate_line_properties(seer, &seer->camera, seer->texture.side);
 		set_texture_params(seer);
-		fill_texture_buffer(seer, x, seer->line.start,
-			seer->line.end);
+		fill_texture_buffer(seer, x, seer->vertline.start,
+			seer->vertline.end);
 	}
 	draw_3d_scene(seer);
 }

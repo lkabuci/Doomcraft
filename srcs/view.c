@@ -1,4 +1,4 @@
-#include "../includes/srcs.h"
+#include "../includes/cray.h"
 
 void	change_to_left(t_seer *pSeer, double rotSpeed)
 {

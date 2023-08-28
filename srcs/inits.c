@@ -1,4 +1,4 @@
-#include "../includes/srcs.h"
+#include "../includes/cray.h"
 
 void initialize_all_variables(t_seer *pSeer);
 
@@ -37,10 +37,6 @@ void	init(t_seer *pSeer)
 	int	i;
 
 	i = -1;
-    pSeer->player.position.x = get_player_xy_position(pSeer->map_info.map_2d).x;
-    pSeer->player.position.y = get_player_xy_position(pSeer->map_info.map_2d).y;
-    pSeer->player.direction = get_first_player_direction(pSeer,
-                                            pSeer->map_info.map_2d[(int)pSeer->player.position.x][(int)pSeer->player.position.y]);
     pSeer->map_info.map_2d[(int)pSeer->player.position.x][(int)pSeer->player.position.y] = 'P';
     pSeer->image = mlx_new_image(pSeer->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx_image_to_window(pSeer->mlx, pSeer->image, 0, 0);

@@ -1,5 +1,5 @@
-#ifndef SRCS_H
-# define SRCS_H
+#ifndef CRAY_H
+# define CRAY_H
 
 # include "../MLX42/include/MLX42/MLX42.h"
 # include "libft.h"
@@ -104,7 +104,7 @@ struct						s_seer
     t_dda                   dda;
     t_map_info				map_info;
     mlx_t					*mlx;
-    t_line					line;
+    t_line					vertline;
     t_point				    mouse;
     t_camera				camera;
     mlx_image_t				*image;
@@ -128,9 +128,7 @@ void						move_forward(t_seer *pSeer, double moveSpeed);
 void						move_backward(t_seer *pSeer, double moveSpeed);
 void						move_left(t_seer *pSeer, double moveSpeed);
 void						move_right(t_seer *pSeer, double moveSpeed);
-void						free_split(char **split);
-t_point					    get_player_xy_position(char **realMap);
-t_vector					get_first_player_direction(t_seer *pSeer, char direction);
+void						free_array(char **split);
 void						end_game(t_seer *pSeer);
 void						mouse_move(t_seer *pSeer);
 void						init(t_seer *pSeer);
@@ -143,4 +141,4 @@ void						set_texture_params(t_seer *pSeer);
 void						set_env(t_seer *pSeer);
 void						draw_3d_scene(t_seer *pSeer);
 void						fill_texture_buffer(t_seer *pSeer, int x, int drawStart, int drawEnd);
-#endif // !SRCS_H
+#endif // !CRAY_H

@@ -1,4 +1,4 @@
-#include "../includes/srcs.h"
+#include "../includes/cray.h"
 
 void	resetting_ray(t_seer *pSeer, t_camera *pCamera, int xPixel)
 {
@@ -67,11 +67,11 @@ void	calculate_line_properties(t_seer *pSeer, t_camera *pCamera, int side)
     pCamera->wall_distance = (pSeer->dda.side_distance.y - pSeer->dda.delta_distance.y);
 	if (side == 0)
         pCamera->wall_distance = (pSeer->dda.side_distance.x - pSeer->dda.delta_distance.x);
-    pSeer->line.height = (int)(SCREEN_HEIGHT / pCamera->wall_distance);
-    pSeer->line.start = -pSeer->line.height / 2 + SCREEN_HEIGHT / 2;
-	if (pSeer->line.start < 0)
-        pSeer->line.start = 0;
-    pSeer->line.end = pSeer->line.height / 2 + SCREEN_HEIGHT / 2;
-	if (pSeer->line.end >= SCREEN_HEIGHT)
-        pSeer->line.end = SCREEN_HEIGHT - 1;
+    pSeer->vertline.height = (int)(SCREEN_HEIGHT / pCamera->wall_distance);
+    pSeer->vertline.start = -pSeer->vertline.height / 2 + SCREEN_HEIGHT / 2;
+	if (pSeer->vertline.start < 0)
+        pSeer->vertline.start = 0;
+    pSeer->vertline.end = pSeer->vertline.height / 2 + SCREEN_HEIGHT / 2;
+	if (pSeer->vertline.end >= SCREEN_HEIGHT)
+        pSeer->vertline.end = SCREEN_HEIGHT - 1;
 }
