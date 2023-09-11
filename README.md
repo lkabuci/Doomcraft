@@ -40,3 +40,7 @@ The [MLX42](https://github.com/codam-coding-college/MLX42) is a minimal graphica
 ➜  ~ make
 ➜  ~ ./cRay assets/maps/map.cub
 ```
+
+### Resources:
+* [Lodev](https://lodev.org/cgtutor/raycasting.html)
+* [Youtube](https://www.youtube.com/watch?v=NbSee-XM7WA)
