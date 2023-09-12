@@ -1,8 +1,8 @@
 #include "../includes/cray.h"
 
-void	free_array(char **split)
+void free_array(char **split)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (split[++i])

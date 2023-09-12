@@ -6,9 +6,9 @@
 
 static bool	is_all_spaces(const char *line);
 
-char	*readline(int fd)
+char *readline(int fd)
 {
-	char	*line;
+	char *line;
 
 	while (true)
 	{
@@ -27,7 +27,7 @@ char	*readline(int fd)
 
 static bool	is_all_spaces(const char *line)
 {
-	int	i;
+	int i;
 
 	i = -1;
 	while (line[++i])
@@ -38,10 +38,10 @@ static bool	is_all_spaces(const char *line)
 	return (true);
 }
 
-bool	is_all_num(char **elements)
+bool is_all_num(char **elements)
 {
-	int	i;
-	int	j;
+	int i;
+	int j;
 
 	i = -1;
 	while (elements[++i])
@@ -56,9 +56,9 @@ bool	is_all_num(char **elements)
 	return (true);
 }
 
-void	skip_till_first_map_line(t_map_info *pInfo)
+void skip_till_first_map_line(t_map_info *pInfo)
 {
-	char	*line;
+	char *line;
 
 	while (true)
 	{

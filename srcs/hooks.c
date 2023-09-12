@@ -1,8 +1,8 @@
 #include "../includes/cray.h"
 
-void	move_hook(void *param)
+void move_hook(void *param)
 {
-	t_seer	*seer;
+	t_seer *seer;
 
 	seer = param;
 	if (mlx_is_key_down(seer->mlx, MLX_KEY_ESCAPE))
@@ -22,10 +22,10 @@ void	move_hook(void *param)
 	mouse_move(seer);
 }
 
-void	draw_hook(void *args)
+void draw_hook(void *args)
 {
-	t_seer	*seer;
-	int		x;
+	t_seer *seer;
+	int x;
 
 	seer = args;
 	ft_memset(seer->image->pixels, 0, seer->image->width * seer->image->height
@@ -33,11 +33,11 @@ void	draw_hook(void *args)
 	x = -1;
 	while (++x < SCREEN_WIDTH)
 	{
-        position_direction(seer, &seer->camera, x);
-        calculate_offsets(seer, &seer->camera);
-        dda(seer, &seer->camera, &seer->texture.side);
-        vertline(seer, &seer->camera, seer->texture.side);
-        set_texture_params(seer, x);
+		position_direction(seer, &seer->camera, x);
+		calculate_offsets(seer, &seer->camera);
+		dda(seer, &seer->camera, &seer->texture.side);
+		vertline(seer, &seer->camera, seer->texture.side);
+		set_texture_params(seer, x);
 	}
 	draw_3d_scene(seer);
 }
