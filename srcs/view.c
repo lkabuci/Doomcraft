@@ -23,7 +23,7 @@ void change_to_right(t_seer *pSeer, double rotSpeed)
 	pSeer->player.direction.y = old_dir_x * sin(-rotSpeed) + pSeer->player.direction.y * cos(-rotSpeed);
 	old_plane_x = pSeer->camera.plane.x;
 	pSeer->camera.plane.x = pSeer->camera.plane.x * cos(-rotSpeed) - pSeer->camera.plane.y
-													   * sin(-rotSpeed);
+		* sin(-rotSpeed);
 	pSeer->camera.plane.y = old_plane_x * sin(-rotSpeed) + pSeer->camera.plane.y * cos(-rotSpeed);
 }
 

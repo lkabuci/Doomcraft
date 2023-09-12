@@ -133,7 +133,7 @@ long get_rgb(char *value)
 	rgb_arr = ft_calloc(sizeof(int) * 3);
 	elements = ft_split(value, ",");
 	if (ft_split_len(elements) != 3 || is_all_num(elements) == false
-		|| check_commas(value) == false)
+			|| check_commas(value) == false)
 		fatal("invalid rgb");
 	while (elements[++i])
 	{

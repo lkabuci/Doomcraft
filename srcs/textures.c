@@ -16,7 +16,7 @@ void set_texture_params(t_seer *pSeer, int xPixel)
 		pSeer->texture.tex_x = CUBE_SIZE - pSeer->texture.tex_x - 1;
 	pSeer->texture.step = 1.0 * CUBE_SIZE / pSeer->vertline.height;
 	pSeer->texture.pos = (pSeer->vertline.start - SCREEN_HEIGHT / 2
-						  + pSeer->vertline.height / 2) * pSeer->texture.step;
+			+ pSeer->vertline.height / 2) * pSeer->texture.step;
 	fill_texture_buffer(pSeer, xPixel, pSeer->vertline.start, pSeer->vertline.end);
 }
 
