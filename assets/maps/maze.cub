@@ -3,8 +3,8 @@ EA ./assets/textures/colorstone.png
 WE ./assets/textures/greystone.png
 SO ./assets/textures/redbrick.png
 
-F 105, 92, 36
-C 148, 147, 85
+F 105,92,36
+C 148,147,85
 
 111111111111111
 100000100000001

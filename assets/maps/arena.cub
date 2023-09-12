@@ -1,6 +1,6 @@
 NO ./assets/textures/redbrick.png
 SO ./assets/textures/eagle.png
-WE ./assets/textures/rockets.png
+WE ./assets/textures/bluestone.png
 EA ./assets/textures/colorstone.png
 
 C 48,46,42
