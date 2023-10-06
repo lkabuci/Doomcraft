@@ -44,7 +44,7 @@ void check_map(t_map_info *pInfo, char **pString) {
             if (ft_strchr("NEWS", pString[i][j]) != NULL)
                 setup_player(&pInfo->seer->player, pString[i][j], i, j);
             check_borders(pString[i]);
-            if (pString[i][j] == '0')
+            if (pString[i][j] == '0' || ft_strchr("NEWS", pString[i][j]))
                 check_wholes(pInfo, pString, i, j);
         }
     }
