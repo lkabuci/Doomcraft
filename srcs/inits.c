@@ -8,9 +8,7 @@ void	init_window(t_seer *pSeer)
 	mlx_set_setting(MLX_DECORATED, false);
     pSeer->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, "WolFeinstein 3D", true);
 	if (pSeer->mlx == NULL)
-	{
 		fatal(mlx_strerror(mlx_errno));
-	}
 	mlx_set_cursor_mode(pSeer->mlx, MLX_MOUSE_HIDDEN);
 	mlx_set_window_limit(pSeer->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH,
                          SCREEN_HEIGHT);

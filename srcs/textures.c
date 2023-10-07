@@ -70,8 +70,8 @@ void	fill_texture_buffer(t_seer *pSeer, int x, int drawStart, int drawEnd)
 	t_point		cord;
 
 	y = drawStart - 1;
-	// maybe here (draw start and draw end)
-	// i shoud print the value of y and check if it's running inside the loop
+	if (drawEnd < 0)
+		drawEnd = SCREEN_HEIGHT - 1;
 	while (++y < drawEnd)
 	{
 		tex_y = (int)pSeer->texture.pos & (CUBE_SIZE - 1);
