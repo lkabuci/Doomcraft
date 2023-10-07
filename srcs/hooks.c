@@ -19,7 +19,10 @@ void	move_hook(void *param)
 		change_to_left(seer, ROTATE_SPEED);
 	if (mlx_is_key_down(seer->mlx, MLX_KEY_RIGHT))
 		change_to_right(seer, ROTATE_SPEED);
-	mouse_move(seer);
+	if (mlx_is_key_down(seer->mlx, MLX_KEY_SPACE))
+		seer->is_mouse_active = !seer->is_mouse_active;
+	if (seer->is_mouse_active)
+		mouse_move(seer);
 }
 
 void	draw_hook(void *args)

@@ -108,6 +108,7 @@ struct						s_seer
     mlx_image_t				*image;
     t_player				player;
     t_texture				texture;
+    bool                    is_mouse_active;
 };
 
 void parsing(t_seer *seer, const char *filename);

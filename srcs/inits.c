@@ -5,7 +5,7 @@ void initialize_all_variables(t_seer *pSeer);
 void	init_window(t_seer *pSeer)
 {
 	mlx_set_setting(MLX_STRETCH_IMAGE, false);
-	mlx_set_setting(MLX_DECORATED, false);
+	mlx_set_setting(MLX_DECORATED, true);
     pSeer->mlx = mlx_init(SCREEN_WIDTH, SCREEN_HEIGHT, "WolFeinstein 3D", true);
 	if (pSeer->mlx == NULL)
 		fatal(mlx_strerror(mlx_errno));
@@ -28,6 +28,7 @@ void initialize_all_variables(t_seer *pSeer) {
     pSeer->map_info.floor_color = -1;
     pSeer->map_info.map_2d = NULL;
     pSeer->map_info.ptr_saver = NULL;
+    pSeer->is_mouse_active =  false;
 }
 
 void	init(t_seer *pSeer)
