@@ -8,7 +8,7 @@ void            parse_elements(t_map_info *info);
 void            fill_elements(mlx_t *mlx, t_map_info *pInfo, char *key, char *value);
 mlx_image_t     *get_texture(mlx_t *pMlx, char *path);
 long            get_rgb(char *value);
-u_int32_t       get_color(const int *rgb);
+unsigned int       get_color(const int *rgb);
 bool            check_commas(const char *str);
 void            parse_map(t_map_info *pInfo);
 void            get_map_dimensions(t_map_info *pInfo);
@@ -128,7 +128,7 @@ long get_rgb(char *value)
     int i;
     int *rgb_arr;
     char **elements;
-    u_int32_t color;
+    unsigned int color;
     i = -1;
     rgb_arr = ft_calloc(sizeof(int) * 3);
     elements = ft_split(value, ",");
@@ -165,7 +165,7 @@ bool check_commas(const char *str)
     return (nbrof_commas == 2);
 }
 
-u_int32_t get_color(const int *rgb)
+unsigned int get_color(const int *rgb)
 {
     uint8_t red;
     uint8_t green;

@@ -67,9 +67,11 @@ void	fill_texture_buffer(t_seer *pSeer, int x, int drawStart, int drawEnd)
 {
 	int			tex_y;
 	int			y;
-	t_point	cord;
+	t_point		cord;
 
 	y = drawStart - 1;
+	// maybe here (draw start and draw end)
+	// i shoud print the value of y and check if it's running inside the loop
 	while (++y < drawEnd)
 	{
 		tex_y = (int)pSeer->texture.pos & (CUBE_SIZE - 1);

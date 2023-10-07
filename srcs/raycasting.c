@@ -11,6 +11,7 @@ void	position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel)
 
 void	calculate_offsets(t_seer *pSeer, t_camera *pCamera)
 {
+	// TODO: check for 0 in the denominator.
     pSeer->dda.delta_distance.y = fabs(1 / pCamera->direction.y);
     pSeer->dda.delta_distance.x = fabs(1 / pCamera->direction.x);
 	if (pCamera->direction.x < 0)
@@ -67,5 +68,8 @@ void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
         pSeer->vertline.start = 0;
     pSeer->vertline.end = pSeer->vertline.height / 2 + SCREEN_HEIGHT / 2;
 	if (pSeer->vertline.end >= SCREEN_HEIGHT)
+	//            ||
+	// maybe here || should be -1.
+	//            v
         pSeer->vertline.end = SCREEN_HEIGHT - 1;
 }

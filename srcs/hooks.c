@@ -29,7 +29,7 @@ void	draw_hook(void *args)
 
 	seer = args;
 	ft_memset(seer->image->pixels, 0, seer->image->width * seer->image->height
-		* sizeof(uint32_t));
+		* sizeof(unsigned int));
 	x = -1;
 	while (++x < SCREEN_WIDTH)
 	{

@@ -57,7 +57,7 @@ struct						s_player
 
 struct						s_texture
 {
-	uint32_t				**buffer;
+	unsigned int				**buffer;
 	double					pos;
 	int						tex_x;
 	int						side;
@@ -134,7 +134,7 @@ void						position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel);
 void						calculate_offsets(t_seer *pSeer, t_camera *pCamera);
 void						dda(t_seer *pSeer, t_camera *pCamera, int *side);
 void						vertline(t_seer *pSeer, t_camera *pCamera, int side);
-uint32_t					get_image_color(mlx_image_t *image, t_point p);
+unsigned int					get_image_color(mlx_image_t *image, t_point p);
 void						set_texture_params(t_seer *pSeer, int xPixel);
 void						set_env(t_seer *pSeer);
 void						draw_3d_scene(t_seer *pSeer);

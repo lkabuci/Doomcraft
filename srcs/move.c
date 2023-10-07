@@ -4,21 +4,27 @@ static bool	can_move(char block);
 
 void	move_forward(t_seer *pSeer, double moveSpeed)
 {
-	if (can_move(pSeer->map_info.map_2d[(int)(pSeer->player.position.x + pSeer->player.direction.x
-                                                                         * moveSpeed)][(int)(pSeer->player.position.y)]))
+	int	next_x;
+	int next_y;
+
+	next_x = (int)(pSeer->player.position.x + pSeer->player.direction.x * moveSpeed);
+	next_y = (int)(pSeer->player.position.y + pSeer->player.direction.y * moveSpeed);
+	if (can_move(pSeer->map_info.map_2d[next_x][(int)(pSeer->player.position.y)]))
         pSeer->player.position.x += pSeer->player.direction.x * moveSpeed;
-	if (can_move(pSeer->map_info.map_2d[(int)(pSeer->player.position.x)][(int)(pSeer->player.position.y + pSeer->player.direction.y
-                                                                                                          * moveSpeed)]))
+	if (can_move(pSeer->map_info.map_2d[(int)(pSeer->player.position.x)][next_y]))
         pSeer->player.position.y += pSeer->player.direction.y * moveSpeed;
 }
 
 void	move_backward(t_seer *pSeer, double moveSpeed)
 {
-	if (can_move(pSeer->map_info.map_2d[(int)(pSeer->player.position.x - pSeer->player.direction.x
-                                                                         * moveSpeed)][(int)(pSeer->player.position.y)]))
+	int	next_x;
+	int next_y;
+
+	next_x = (int)(pSeer->player.position.x - pSeer->player.direction.x * moveSpeed);
+	next_y = (int)(pSeer->player.position.y - pSeer->player.direction.y * moveSpeed);
+	if (can_move(pSeer->map_info.map_2d[next_x][(int)(pSeer->player.position.y)]))
         pSeer->player.position.x -= pSeer->player.direction.x * moveSpeed;
-	if (can_move(pSeer->map_info.map_2d[(int)(pSeer->player.position.x)][(int)(pSeer->player.position.y - pSeer->player.direction.y
-                                                                                                          * moveSpeed)]))
+	if (can_move(pSeer->map_info.map_2d[(int)(pSeer->player.position.x)][next_y]))
         pSeer->player.position.y -= pSeer->player.direction.y * moveSpeed;
 }
 
