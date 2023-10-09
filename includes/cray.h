@@ -26,7 +26,7 @@ typedef struct s_map_info	t_map_info;
 typedef struct s_camera		t_camera;
 typedef struct s_line		t_line;
 typedef struct s_texture	t_texture;
-typedef struct s_dda        t_dda;
+typedef struct s_dda		t_dda;
 
 struct						s_point
 {
@@ -42,22 +42,22 @@ struct						s_vector
 
 struct						s_line
 {
-    int						height;
-    int						start;
-    int						end;
+	int						height;
+	int						start;
+	int						end;
 };
 
 struct						s_player
 {
 	char					first_view;
-    t_vector                position;
-    t_vector                direction;
-    t_seer                  *seer;
+	t_vector				position;
+	t_vector				direction;
+	t_seer					*seer;
 };
 
 struct						s_texture
 {
-	unsigned int				**buffer;
+	unsigned int			**buffer;
 	double					pos;
 	int						tex_x;
 	int						side;
@@ -76,47 +76,48 @@ struct						s_map_info
 	int						map_width;
 	char					**map_2d;
 	char					*ptr_saver;
-    int                     fd;
-    t_seer                  *seer;
+	int						fd;
+	t_seer					*seer;
 };
 
-struct s_dda {
-    double      iter;
-    t_vector    side_distance;
-    t_vector    delta_distance;
-    int         step_x;
-    int         step_y;
+struct						s_dda
+{
+	double					iter;
+	t_vector				side_distance;
+	t_vector				delta_distance;
+	int						step_x;
+	int						step_y;
 };
 
 struct						s_camera
 {
-    t_vector				plane;
+	t_vector				plane;
 	int						map_x;
 	int						map_y;
-    t_vector                direction;
-    double					wall_distance;
+	t_vector				direction;
+	double					wall_distance;
 };
 
 struct						s_seer
 {
-    t_dda                   dda;
-    t_map_info				map_info;
-    mlx_t					*mlx;
-    t_line					vertline;
-    t_point				    mouse;
-    t_camera				camera;
-    mlx_image_t				*image;
-    t_player				player;
-    t_texture				texture;
-    bool                    is_mouse_active;
+	t_dda					dda;
+	t_map_info				map_info;
+	mlx_t					*mlx;
+	t_line					vertline;
+	t_point					mouse;
+	t_camera				camera;
+	mlx_image_t				*image;
+	t_player				player;
+	t_texture				texture;
+	bool					is_mouse_active;
 };
 
-void parsing(t_seer *seer, const char *filename);
-void check_filename(const char *filename);
-void check_map(t_map_info *pInfo, char **pString);
-char	*readline(int fd);
-bool	is_all_num(char **elements);
-void	skip_till_first_map_line(t_map_info *pInfo);
+void						parsing(t_seer *seer, const char *filename);
+void						check_filename(const char *filename);
+void						check_map(t_map_info *pInfo, char **pString);
+char						*readline(int fd);
+bool						is_all_num(char **elements);
+void						skip_till_first_map_line(t_map_info *pInfo);
 
 void						move_hook(void *param);
 void						draw_hook(void *args);
@@ -131,13 +132,16 @@ void						free_array(char **split);
 void						end_game(t_seer *pSeer);
 void						mouse_move(t_seer *pSeer);
 void						init(t_seer *pSeer);
-void						position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel);
+void						position_direction(t_seer *pSeer, t_camera *pCamera,
+								int xPixel);
 void						calculate_offsets(t_seer *pSeer, t_camera *pCamera);
 void						dda(t_seer *pSeer, t_camera *pCamera, int *side);
-void						vertline(t_seer *pSeer, t_camera *pCamera, int side);
-unsigned int					get_image_color(mlx_image_t *image, t_point p);
+void						vertline(t_seer *pSeer, t_camera *pCamera,
+								int side);
+unsigned int				get_image_color(mlx_image_t *image, t_point p);
 void						set_texture_params(t_seer *pSeer, int xPixel);
 void						set_env(t_seer *pSeer);
 void						draw_3d_scene(t_seer *pSeer);
-void						fill_texture_buffer(t_seer *pSeer, int x, int drawStart, int drawEnd);
+void						fill_texture_buffer(t_seer *pSeer, int x,
+								int drawStart, int drawEnd);
 #endif // !CRAY_H

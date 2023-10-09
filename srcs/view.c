@@ -6,11 +6,15 @@ void	change_to_left(t_seer *pSeer, double rotSpeed)
 	double	old_plane_x;
 
 	old_dir_x = pSeer->player.direction.x;
-    pSeer->player.direction.x = pSeer->player.direction.x * cos(rotSpeed) - pSeer->player.direction.y * sin(rotSpeed);
-    pSeer->player.direction.y = old_dir_x * sin(rotSpeed) + pSeer->player.direction.y * cos(rotSpeed);
+	pSeer->player.direction.x = pSeer->player.direction.x * cos(rotSpeed)
+		- pSeer->player.direction.y * sin(rotSpeed);
+	pSeer->player.direction.y = old_dir_x * sin(rotSpeed)
+		+ pSeer->player.direction.y * cos(rotSpeed);
 	old_plane_x = pSeer->camera.plane.x;
-    pSeer->camera.plane.x = pSeer->camera.plane.x * cos(rotSpeed) - pSeer->camera.plane.y * sin(rotSpeed);
-    pSeer->camera.plane.y = old_plane_x * sin(rotSpeed) + pSeer->camera.plane.y * cos(rotSpeed);
+	pSeer->camera.plane.x = pSeer->camera.plane.x * cos(rotSpeed)
+		- pSeer->camera.plane.y * sin(rotSpeed);
+	pSeer->camera.plane.y = old_plane_x * sin(rotSpeed) + pSeer->camera.plane.y
+		* cos(rotSpeed);
 }
 
 void	change_to_right(t_seer *pSeer, double rotSpeed)
@@ -19,12 +23,15 @@ void	change_to_right(t_seer *pSeer, double rotSpeed)
 	double	old_plane_x;
 
 	old_dir_x = pSeer->player.direction.x;
-    pSeer->player.direction.x = pSeer->player.direction.x * cos(-rotSpeed) - pSeer->player.direction.y * sin(-rotSpeed);
-    pSeer->player.direction.y = old_dir_x * sin(-rotSpeed) + pSeer->player.direction.y * cos(-rotSpeed);
+	pSeer->player.direction.x = pSeer->player.direction.x * cos(-rotSpeed)
+		- pSeer->player.direction.y * sin(-rotSpeed);
+	pSeer->player.direction.y = old_dir_x * sin(-rotSpeed)
+		+ pSeer->player.direction.y * cos(-rotSpeed);
 	old_plane_x = pSeer->camera.plane.x;
-    pSeer->camera.plane.x = pSeer->camera.plane.x * cos(-rotSpeed) - pSeer->camera.plane.y
-                                                       * sin(-rotSpeed);
-    pSeer->camera.plane.y = old_plane_x * sin(-rotSpeed) + pSeer->camera.plane.y * cos(-rotSpeed);
+	pSeer->camera.plane.x = pSeer->camera.plane.x * cos(-rotSpeed)
+		- pSeer->camera.plane.y * sin(-rotSpeed);
+	pSeer->camera.plane.y = old_plane_x * sin(-rotSpeed) + pSeer->camera.plane.y
+		* cos(-rotSpeed);
 }
 
 void	mouse_move(t_seer *pSeer)

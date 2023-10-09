@@ -5,27 +5,31 @@ static bool	can_move(char block);
 void	move_forward(t_seer *pSeer, double moveSpeed)
 {
 	int	next_x;
-	int next_y;
+	int	next_y;
 
-	next_x = (int)(pSeer->player.position.x + pSeer->player.direction.x * moveSpeed);
-	next_y = (int)(pSeer->player.position.y + pSeer->player.direction.y * moveSpeed);
+	next_x = (int)(pSeer->player.position.x + pSeer->player.direction.x
+		* moveSpeed);
+	next_y = (int)(pSeer->player.position.y + pSeer->player.direction.y
+		* moveSpeed);
 	if (can_move(pSeer->map_info.map_2d[next_x][(int)(pSeer->player.position.y)]))
-        pSeer->player.position.x += pSeer->player.direction.x * moveSpeed;
+		pSeer->player.position.x += pSeer->player.direction.x * moveSpeed;
 	if (can_move(pSeer->map_info.map_2d[(int)(pSeer->player.position.x)][next_y]))
-        pSeer->player.position.y += pSeer->player.direction.y * moveSpeed;
+		pSeer->player.position.y += pSeer->player.direction.y * moveSpeed;
 }
 
 void	move_backward(t_seer *pSeer, double moveSpeed)
 {
 	int	next_x;
-	int next_y;
+	int	next_y;
 
-	next_x = (int)(pSeer->player.position.x - pSeer->player.direction.x * moveSpeed);
-	next_y = (int)(pSeer->player.position.y - pSeer->player.direction.y * moveSpeed);
+	next_x = (int)(pSeer->player.position.x - pSeer->player.direction.x
+		* moveSpeed);
+	next_y = (int)(pSeer->player.position.y - pSeer->player.direction.y
+		* moveSpeed);
 	if (can_move(pSeer->map_info.map_2d[next_x][(int)(pSeer->player.position.y)]))
-        pSeer->player.position.x -= pSeer->player.direction.x * moveSpeed;
+		pSeer->player.position.x -= pSeer->player.direction.x * moveSpeed;
 	if (can_move(pSeer->map_info.map_2d[(int)(pSeer->player.position.x)][next_y]))
-        pSeer->player.position.y -= pSeer->player.direction.y * moveSpeed;
+		pSeer->player.position.y -= pSeer->player.direction.y * moveSpeed;
 }
 
 void	move_left(t_seer *pSeer, double moveSpeed)
@@ -36,9 +40,9 @@ void	move_left(t_seer *pSeer, double moveSpeed)
 	new_x = pSeer->player.position.x - pSeer->camera.plane.x * moveSpeed;
 	new_y = pSeer->player.position.y - pSeer->camera.plane.y * moveSpeed;
 	if (can_move(pSeer->map_info.map_2d[(int)new_x][(int)pSeer->player.position.y]))
-        pSeer->player.position.x = new_x;
+		pSeer->player.position.x = new_x;
 	if (can_move(pSeer->map_info.map_2d[(int)pSeer->player.position.x][(int)new_y]))
-        pSeer->player.position.y = new_y;
+		pSeer->player.position.y = new_y;
 }
 
 void	move_right(t_seer *pSeer, double moveSpeed)
@@ -49,9 +53,9 @@ void	move_right(t_seer *pSeer, double moveSpeed)
 	new_x = pSeer->player.position.x + pSeer->camera.plane.x * moveSpeed;
 	new_y = pSeer->player.position.y + pSeer->camera.plane.y * moveSpeed;
 	if (can_move(pSeer->map_info.map_2d[(int)new_x][(int)pSeer->player.position.y]))
-        pSeer->player.position.x = new_x;
+		pSeer->player.position.x = new_x;
 	if (can_move(pSeer->map_info.map_2d[(int)pSeer->player.position.x][(int)new_y]))
-        pSeer->player.position.y = new_y;
+		pSeer->player.position.y = new_y;
 }
 
 static bool	can_move(char block)

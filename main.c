@@ -4,7 +4,7 @@
 
 #include "includes/cray.h"
 
-int main(int argc, const char *argv[])
+int	main(int argc, const char *argv[])
 {
 	t_seer	var;
 
@@ -25,7 +25,7 @@ void	end_game(t_seer *pSeer)
 	int	i;
 
 	i = -1;
-    free_array(pSeer->map_info.map_2d);
+	free_array(pSeer->map_info.map_2d);
 	mlx_delete_image(pSeer->mlx, pSeer->image);
 	mlx_close_window(pSeer->mlx);
 	while (++i < SCREEN_HEIGHT)

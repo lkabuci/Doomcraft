@@ -36,11 +36,11 @@ void	draw_hook(void *args)
 	x = -1;
 	while (++x < SCREEN_WIDTH)
 	{
-        position_direction(seer, &seer->camera, x);
-        calculate_offsets(seer, &seer->camera);
-        dda(seer, &seer->camera, &seer->texture.side);
-        vertline(seer, &seer->camera, seer->texture.side);
-        set_texture_params(seer, x);
+		position_direction(seer, &seer->camera, x);
+		calculate_offsets(seer, &seer->camera);
+		dda(seer, &seer->camera, &seer->texture.side);
+		vertline(seer, &seer->camera, seer->texture.side);
+		set_texture_params(seer, x);
 	}
 	draw_3d_scene(seer);
 }
