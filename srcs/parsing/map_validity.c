@@ -58,12 +58,12 @@ void	check_map(t_map_info *pInfo, char **pString)
 
 void	setup_player(t_player *pPlayer, char direction, int row, int column)
 {
-	static bool	isPlayerFound;
+	static bool	is_player_found;
 
-	isPlayerFound = false;
-	if (isPlayerFound)
+	is_player_found = false;
+	if (is_player_found)
 		fatal("Map contains more than one player");
-	isPlayerFound = true;
+	is_player_found = true;
 	pPlayer->position.x = row;
 	pPlayer->position.y = column;
 	pPlayer->first_view = direction;

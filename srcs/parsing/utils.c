@@ -58,7 +58,7 @@ bool	is_all_num(char **elements)
 
 void	skip_till_first_map_line(t_map_info *pInfo)
 {
-	char *line;
+	char	*line;
 
 	while (true)
 	{

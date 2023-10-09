@@ -18,7 +18,7 @@ void	set_texture_params(t_seer *pSeer, int xPixel)
 		pSeer->texture.tex_x = CUBE_SIZE - pSeer->texture.tex_x - 1;
 	pSeer->texture.step = 1.0 * CUBE_SIZE / pSeer->vertline.height;
 	pSeer->texture.pos = (pSeer->vertline.start - SCREEN_HEIGHT / 2
-		+ pSeer->vertline.height / 2) * pSeer->texture.step;
+			+ pSeer->vertline.height / 2) * pSeer->texture.step;
 	fill_texture_buffer(pSeer, xPixel, pSeer->vertline.start,
 		pSeer->vertline.end);
 }
@@ -81,16 +81,16 @@ void	fill_texture_buffer(t_seer *pSeer, int x, int drawStart, int drawEnd)
 		pSeer->texture.pos += pSeer->texture.step;
 		cord = (t_point){pSeer->texture.tex_x, tex_y};
 		if (pSeer->texture.side == 0 && pSeer->camera.direction.x > 0)
-			pSeer->texture.buffer[y][x] = get_image_color(pSeer->map_info.south_image,
-				cord);
+			pSeer->texture.buffer[y][x] = \
+				get_image_color(pSeer->map_info.south_image, cord);
 		else if (pSeer->texture.side == 0)
-			pSeer->texture.buffer[y][x] = get_image_color(pSeer->map_info.north_image,
-				cord);
+			pSeer->texture.buffer[y][x] = \
+				get_image_color (pSeer->map_info.north_image, cord);
 		else if (pSeer->camera.direction.y > 0)
-			pSeer->texture.buffer[y][x] = get_image_color(pSeer->map_info.east_image,
-				cord);
+			pSeer->texture.buffer[y][x] = \
+				get_image_color (pSeer->map_info.east_image, cord);
 		else
-			pSeer->texture.buffer[y][x] = get_image_color(pSeer->map_info.west_image,
-				cord);
+			pSeer->texture.buffer[y][x] = \
+				get_image_color (pSeer->map_info.west_image, cord);
 	}
 }

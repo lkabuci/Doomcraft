@@ -37,11 +37,12 @@ void	init(t_seer *pSeer)
 	int	i;
 
 	i = -1;
-	pSeer->map_info.map_2d[(int)pSeer->player.position.x][(int)pSeer->player.position.y] = 'P';
+	pSeer->map_info.map_2d[(int)pSeer->player.position.x] \
+	[(int)pSeer->player.position.y] = 'P';
 	pSeer->image = mlx_new_image(pSeer->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx_image_to_window(pSeer->mlx, pSeer->image, 0, 0);
 	pSeer->texture.buffer = ft_calloc((SCREEN_HEIGHT) * sizeof(unsigned int *));
 	while (++i < SCREEN_HEIGHT)
 		pSeer->texture.buffer[i] = ft_calloc(sizeof(unsigned int)
-			* (SCREEN_WIDTH));
+				* (SCREEN_WIDTH));
 }

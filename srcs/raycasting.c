@@ -25,7 +25,7 @@ void	calculate_offsets(t_seer *pSeer, t_camera *pCamera)
 	{
 		pSeer->dda.step_x = 1;
 		pSeer->dda.side_distance.x = (pCamera->map_x + 1.0
-			- pSeer->player.position.x) * pSeer->dda.delta_distance.x;
+				- pSeer->player.position.x) * pSeer->dda.delta_distance.x;
 	}
 	if (pCamera->direction.y < 0)
 	{
@@ -37,7 +37,7 @@ void	calculate_offsets(t_seer *pSeer, t_camera *pCamera)
 	{
 		pSeer->dda.step_y = 1;
 		pSeer->dda.side_distance.y = (pCamera->map_y + 1.0
-			- pSeer->player.position.y) * pSeer->dda.delta_distance.y;
+				- pSeer->player.position.y) * pSeer->dda.delta_distance.y;
 	}
 }
 
@@ -65,10 +65,10 @@ void	dda(t_seer *pSeer, t_camera *pCamera, int *side)
 void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
 {
 	pCamera->wall_distance = (pSeer->dda.side_distance.y
-		- pSeer->dda.delta_distance.y);
+			- pSeer->dda.delta_distance.y);
 	if (side == 0)
 		pCamera->wall_distance = (pSeer->dda.side_distance.x
-			- pSeer->dda.delta_distance.x);
+				- pSeer->dda.delta_distance.x);
 	pSeer->vertline.height = (int)(SCREEN_HEIGHT / pCamera->wall_distance);
 	pSeer->vertline.start = -pSeer->vertline.height / 2 + SCREEN_HEIGHT / 2;
 	if (pSeer->vertline.start < 0)
