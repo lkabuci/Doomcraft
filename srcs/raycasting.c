@@ -74,6 +74,6 @@ void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
 	if (pSeer->vertline.start < 0)
 		pSeer->vertline.start = 0;
 	pSeer->vertline.end = pSeer->vertline.height / 2 + SCREEN_HEIGHT / 2;
-	if (pSeer->vertline.end >= SCREEN_HEIGHT)
+	if (pSeer->vertline.end >= SCREEN_HEIGHT || pSeer->vertline.end < 0)
 		pSeer->vertline.end = SCREEN_HEIGHT - 1;
 }
