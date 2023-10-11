@@ -112,6 +112,12 @@ struct						s_seer
 	bool					is_mouse_active;
 };
 
+void						fill_map(t_map_info *pInfo);
+unsigned int				get_color(const int *rgb);
+bool						check_commas(const char *str);
+mlx_image_t					*get_texture(mlx_t *pMlx, char *path);
+long						get_rgb(char *value);
+void						fill_elements(mlx_t *mlx, t_map_info *pInfo, char *key, char *value);
 void						parsing(t_seer *seer, const char *filename);
 void						check_filename(const char *filename);
 void						check_map(t_map_info *pInfo, char **pString);

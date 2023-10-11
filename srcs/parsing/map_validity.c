@@ -13,24 +13,9 @@
  */
 
 void	check_borders(char *line);
-
 void	check_wholes(t_map_info *pInfo, char **line, int row, int column);
-
 void	setup_player(t_player *pPlayer, char direction, int row, int column);
-
 void	setup_player_direction(t_player *pPlayer, char direction);
-
-// TODO: check more tests
-void	check_filename(const char *filename)
-{
-	int		len;
-	char	*extension;
-
-	len = ft_strlen((char *)filename);
-	extension = ft_strnstr((char *)filename, ".cub", len);
-	if (extension == NULL || ft_strcmp(extension, ".cub") != 0)
-		fatal("Invalid file extension");
-}
 
 void	check_map(t_map_info *pInfo, char **pString)
 {

@@ -6,6 +6,18 @@
 
 static bool	is_all_spaces(const char *line);
 
+// TODO: .cub shouldn't be allowed
+void	check_filename(const char *filename)
+{
+	int		len;
+	char	*extension;
+
+	len = ft_strlen((char *)filename);
+	extension = ft_strnstr((char *)filename, ".cub", len);
+	if (extension == NULL || ft_strcmp(extension, ".cub") != 0)
+		fatal("Invalid file extension");
+}
+
 char	*readline(int fd)
 {
 	char	*line;

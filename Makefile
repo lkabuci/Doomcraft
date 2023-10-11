@@ -15,7 +15,7 @@ else
     LINKING =	$(MLX_LIB) -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 endif
 
-SRCS		=	main.c libft/fatal.c libft/ft_atoi.c libft/ft_calloc.c libft/ft_memcpy.c libft/ft_memset.c libft/ft_split.c libft/ft_strchr.c libft/ft_strcmp.c libft/ft_strdup.c libft/ft_strlen.c libft/ft_strrchr.c libft/ft_strtrim.c libft/ft_substr.c libft/ft_strnstr.c libft/get_next_line.c libft/split_utils.c srcs/inits.c srcs/parsing/map_validity.c srcs/parsing/parsing.c srcs/parsing/utils.c srcs/hooks.c srcs/move.c srcs/raycasting.c srcs/textures.c srcs/utils.c srcs/view.c srcs/helpers.c
+SRCS		=	main.c libft/fatal.c libft/ft_atoi.c libft/ft_calloc.c libft/ft_memcpy.c libft/ft_memset.c libft/ft_split.c libft/ft_strchr.c libft/ft_strcmp.c libft/ft_strdup.c libft/ft_strlen.c libft/ft_strrchr.c libft/ft_strtrim.c libft/ft_substr.c libft/ft_strnstr.c libft/get_next_line.c libft/split_utils.c srcs/inits.c srcs/parsing/map_validity.c srcs/parsing/parsing.c srcs/parsing/utils.c srcs/hooks.c srcs/move.c srcs/raycasting.c srcs/textures.c srcs/utils.c srcs/view.c srcs/helpers.c srcs/parsing/colors.c srcs/parsing/map.c
 
 SRCS_DIRS   = $(dir $(SRCS))
 

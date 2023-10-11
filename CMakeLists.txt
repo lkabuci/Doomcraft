@@ -34,6 +34,8 @@ set(SOURCES
 	srcs/parsing/map_validity.c
 	srcs/parsing/parsing.c
 	srcs/parsing/utils.c
+	srcs/parsing/colors.c
+	srcs/parsing/map.c
 	srcs/raycasting.c
 	srcs/textures.c
 	srcs/utils.c

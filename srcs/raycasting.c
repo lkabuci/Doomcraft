@@ -9,12 +9,12 @@ void	position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel)
 		* pSeer->dda.iter;
 	pCamera->map_x = (int)pSeer->player.position.x;
 	pCamera->map_y = (int)pSeer->player.position.y;
+	pSeer->dda.delta_distance.y = fabs(1 / pCamera->direction.y);
+	pSeer->dda.delta_distance.x = fabs(1 / pCamera->direction.x);
 }
 
 void	calculate_offsets(t_seer *pSeer, t_camera *pCamera)
 {
-	pSeer->dda.delta_distance.y = fabs(1 / pCamera->direction.y);
-	pSeer->dda.delta_distance.x = fabs(1 / pCamera->direction.x);
 	if (pCamera->direction.x < 0)
 	{
 		pSeer->dda.step_x = -1;
