@@ -18,6 +18,23 @@
 # define SPACES " \t\n"
 # define NBROF_ELEMENTS 6
 
+/* ERRORS_MACRO */
+# define ERR_RGB "invalid rgb"
+# define ERR_MAP_INFO "Invalid map_info !!"
+# define ERR_ELEMENT "Invalid map_info elements"
+# define ERR_OPEN "Can't open the file"
+# define ERR_DUPLICATED "duplicated or invalid element"
+# define ERR_INFO "elements after map_info"
+# define ERR_WHOLES "Map contains wholes"
+# define ERR_N_PLAYER "Map doesn't contain player"
+# define ERR_M_PLAYER "Map contains more than one player"
+# define ERR_MALLOC "Memory allocation failed"
+# define ERR_INVALID_CHAR	"Map contains invalid characters"
+# define ERR_EXTENSION	"Invalid file extension"
+# define ERR_NO_WALLS	"Map is not surrounded by walls"
+# define USAGE	"Usage: ./cub3D <map_2d.cub>"
+
+
 typedef struct s_player		t_player;
 typedef struct s_vector		t_vector;
 typedef struct s_point		t_point;

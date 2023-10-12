@@ -29,7 +29,7 @@ void	check_map(t_map_info *pInfo, char **pString)
 		while (pString[i][++j])
 		{
 			if (ft_strchr("01NEWS ", pString[i][j]) == NULL)
-				fatal("Map contains invalid characters");
+				fatal(ERR_INVALID_CHAR);
 			if (ft_strchr("NEWS", pString[i][j]) != NULL)
 				setup_player(&pInfo->seer->player, pString[i][j], i, j);
 			check_borders(pString[i]);
@@ -38,7 +38,7 @@ void	check_map(t_map_info *pInfo, char **pString)
 		}
 	}
 	if (pInfo->seer->player.first_view == 0)
-		fatal("Map doesn't contain player");
+		fatal(ERR_N_PLAYER);
 }
 
 void	setup_player(t_player *pPlayer, char direction, int row, int column)
@@ -47,7 +47,7 @@ void	setup_player(t_player *pPlayer, char direction, int row, int column)
 
 	is_player_found = false;
 	if (is_player_found)
-		fatal("Map contains more than one player");
+		fatal(ERR_M_PLAYER);
 	is_player_found = true;
 	pPlayer->position.x = row;
 	pPlayer->position.y = column;
@@ -86,7 +86,7 @@ void	check_borders(char *line)
 
 	trimed_line = ft_strtrim(line, " ");
 	if (trimed_line[0] != '1' || trimed_line[ft_strlen(trimed_line) - 1] != '1')
-		fatal("Map is not surrounded by walls");
+		fatal(ERR_NO_WALLS);
 	free(trimed_line);
 	trimed_line = NULL;
 }
@@ -94,11 +94,11 @@ void	check_borders(char *line)
 void	check_wholes(t_map_info *pInfo, char **line, int row, int column)
 {
 	if (row == 0 || row == pInfo->map_height - 1)
-		fatal("Map is not surrounded by walls");
+		fatal(ERR_NO_WALLS);
 	if (column == 0 || column == pInfo->map_width - 1)
-		fatal("Map is not surrounded by walls");
+		fatal(ERR_NO_WALLS);
 	if (line[row - 1][column] == ' ' || line[row + 1][column] == ' ')
-		fatal("Map contains wholes");
+		fatal(ERR_WHOLES);
 	if (line[row][column - 1] == ' ' || line[row][column + 1] == ' ')
-		fatal("Map contains wholes");
+		fatal(ERR_WHOLES);
 }

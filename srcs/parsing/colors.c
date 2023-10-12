@@ -12,14 +12,14 @@ long	get_rgb(char *value)
 	elements = ft_split(value, ",");
 	if (ft_split_len(elements) != 3 || is_all_num(elements) == false
 		|| check_commas(value) == false)
-		fatal("invalid rgb");
+		fatal(ERR_RGB);
 	while (elements[++i])
 	{
 		if (ft_strlen(elements[i]) > 3)
-			fatal("invalid rgb");
+			fatal(ERR_RGB);
 		rgb_arr[i] = ft_atoi(elements[i]);
 		if (rgb_arr[i] > 255 || rgb_arr[i] < 0)
-			fatal("invalid rgb");
+			fatal(ERR_RGB);
 	}
 	color = get_color(rgb_arr);
 	free_array(elements);

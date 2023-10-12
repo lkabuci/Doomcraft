@@ -7,7 +7,7 @@ void	get_map_dimensions(t_map_info *pInfo)
 	char	*rest_map;
 
 	if (!pInfo->ptr_saver)
-		fatal("Invalid map_info !!");
+		fatal(ERR_MAP_INFO);
 	pInfo->map_width = ft_strlen(pInfo->ptr_saver) - 1;
 	while (true)
 	{
@@ -25,7 +25,7 @@ void	get_map_dimensions(t_map_info *pInfo)
 	if (rest_map != NULL)
 	{
 		free(rest_map);
-		fatal("elements after map_info");
+		fatal(ERR_INFO);
 	}
 }
 

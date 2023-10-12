@@ -16,7 +16,7 @@ void	parsing(t_seer *seer, const char *filename)
 	check_filename(filename);
 	seer->map_info.fd = open(filename, O_RDONLY);
 	if (seer->map_info.fd == -1)
-		fatal("Can't open the file");
+		fatal(ERR_OPEN);
 	parse_elements(&seer->map_info);
 	get_map_dimensions(&seer->map_info);
 	close(seer->map_info.fd);
@@ -40,7 +40,7 @@ void	parse_elements(t_map_info *info)
 			break ;
 		elements = ft_split(line, SPACES);
 		if (ft_split_len(elements) != 2)
-			fatal("Invalid map_info elements");
+			fatal(ERR_ELEMENT);
 		fill_elements(info->seer->mlx, info, elements[0], elements[1]);
 		free(line);
 		free_array(elements);
@@ -63,5 +63,5 @@ void	fill_elements(mlx_t *mlx, t_map_info *pInfo, char *key, char *value)
 	else if (!ft_strcmp(key, "C") && pInfo->ceil_color == -1)
 		pInfo->ceil_color = get_rgb(value);
 	else
-		fatal("duplicated or invalid element");
+		fatal(ERR_DUPLICATED);
 }

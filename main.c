@@ -9,7 +9,7 @@ int	main(int argc, const char *argv[])
 	t_seer	var;
 
 	if (argc != 2)
-		fatal("Usage: ./cub3D <map_2d.cub>\n");
+		fatal(USAGE);
 	init_window(&var);
 	parsing(&var, argv[1]);
 	init(&var);
