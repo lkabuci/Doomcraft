@@ -69,6 +69,8 @@ void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
 	if (side == 0)
 		pCamera->wall_distance = (pSeer->dda.side_distance.x
 				- pSeer->dda.delta_distance.x);
+	if (pCamera->wall_distance == 0)
+		pCamera->wall_distance = 0.0001;
 	pSeer->vertline.height = (int)(SCREEN_HEIGHT / pCamera->wall_distance);
 	pSeer->vertline.start = -pSeer->vertline.height / 2 + SCREEN_HEIGHT / 2;
 	if (pSeer->vertline.start < 0)
