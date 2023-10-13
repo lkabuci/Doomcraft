@@ -48,8 +48,12 @@ void	fill_map(t_map_info *pInfo)
 	{
 		pInfo->map_2d[i] = ft_calloc(sizeof(char) * (pInfo->map_width + 1));
 		ft_memset(pInfo->map_2d[i], ' ', pInfo->map_width);
-		ft_memcpy(pInfo->map_2d[i], line, ft_strlen(line) - 1);
+		if (ft_strchr(line, '\n') == NULL)
+			ft_memcpy(pInfo->map_2d[i], line, ft_strlen(line));
+		else
+			ft_memcpy(pInfo->map_2d[i], line, ft_strlen(line) - 1);
 		free(line);
+		line = NULL;
 		line = readline(pInfo->fd);
 		if (line == NULL)
 			break ;
