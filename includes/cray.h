@@ -17,6 +17,8 @@
 // MISC
 # define SPACES " \t\n"
 # define NBROF_ELEMENTS 6
+# define HORIZONTAL 0
+# define VERTICAL 1
 
 /* ERRORS_MACRO */
 # define ERR_RGB "invalid rgb"

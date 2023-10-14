@@ -4,7 +4,7 @@ void	set_texture_params(t_seer *pSeer, int xPixel)
 {
 	double	wall_x;
 
-	if (pSeer->texture.side == 0)
+	if (pSeer->texture.side == HORIZONTAL)
 		wall_x = pSeer->player.position.y + pSeer->camera.wall_distance
 			* pSeer->camera.direction.y;
 	else
@@ -12,9 +12,9 @@ void	set_texture_params(t_seer *pSeer, int xPixel)
 			* pSeer->camera.direction.x;
 	wall_x -= floor((wall_x));
 	pSeer->texture.tex_x = (int)(wall_x * (double)(CUBE_SIZE));
-	if (pSeer->texture.side == 0 && pSeer->camera.direction.x > 0)
+	if (pSeer->texture.side == HORIZONTAL && pSeer->camera.direction.x > 0)
 		pSeer->texture.tex_x = CUBE_SIZE - pSeer->texture.tex_x - 1;
-	if (pSeer->texture.side == 1 && pSeer->camera.direction.y < 0)
+	if (pSeer->texture.side == VERTICAL && pSeer->camera.direction.y < 0)
 		pSeer->texture.tex_x = CUBE_SIZE - pSeer->texture.tex_x - 1;
 	pSeer->texture.step = 1.0 * CUBE_SIZE / pSeer->vertline.height;
 	pSeer->texture.pos = (pSeer->vertline.start - SCREEN_HEIGHT / 2
@@ -78,10 +78,10 @@ void	fill_texture_buffer(t_seer *pSeer, int x, int drawStart, int drawEnd)
 		tex_y = (int)pSeer->texture.pos & (CUBE_SIZE - 1);
 		pSeer->texture.pos += pSeer->texture.step;
 		cord = (t_point){pSeer->texture.tex_x, tex_y};
-		if (pSeer->texture.side == 0 && pSeer->camera.direction.x > 0)
+		if (pSeer->texture.side == HORIZONTAL && pSeer->camera.direction.x > 0)
 			pSeer->texture.buffer[y][x] = \
 				get_image_color(pSeer->map_info.south_image, cord);
-		else if (pSeer->texture.side == 0)
+		else if (pSeer->texture.side == HORIZONTAL)
 			pSeer->texture.buffer[y][x] = \
 				get_image_color (pSeer->map_info.north_image, cord);
 		else if (pSeer->camera.direction.y > 0)
