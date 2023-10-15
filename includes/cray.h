@@ -61,9 +61,9 @@ struct						s_vector
 
 struct						s_line
 {
-	int						height;
-	int						start;
-	int						end;
+	long						height;
+	long						start;
+	long						end;
 };
 
 struct						s_player
@@ -102,8 +102,8 @@ struct						s_map_info
 struct						s_dda
 {
 	double					iter;
-	t_vector				side_distance;
-	t_vector				delta_distance;
+	t_vector				distance;
+	t_vector				scaling_factor;
 	int						step_x;
 	int						step_y;
 };

@@ -9,8 +9,8 @@ void	position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel)
 		* pSeer->dda.iter;
 	pCamera->map_x = (int)pSeer->player.position.x;
 	pCamera->map_y = (int)pSeer->player.position.y;
-	pSeer->dda.delta_distance.x = sqrt(1 + (pCamera->direction.y * pCamera->direction.y) / (pCamera->direction.x * pCamera->direction.x));
-	pSeer->dda.delta_distance.y = sqrt(1 + (pCamera->direction.x * pCamera->direction.x) / (pCamera->direction.y * pCamera->direction.y));
+	pSeer->dda.scaling_factor.x = sqrt(1 + (pCamera->direction.y * pCamera->direction.y) / (pCamera->direction.x * pCamera->direction.x));
+	pSeer->dda.scaling_factor.y = sqrt(1 + (pCamera->direction.x * pCamera->direction.x) / (pCamera->direction.y * pCamera->direction.y));
 }
 
 void	calculate_offsets(t_seer *pSeer, t_camera *pCamera)
@@ -18,26 +18,26 @@ void	calculate_offsets(t_seer *pSeer, t_camera *pCamera)
 	if (pCamera->direction.x < 0)
 	{
 		pSeer->dda.step_x = -1;
-		pSeer->dda.side_distance.x = (pSeer->player.position.x - pCamera->map_x)
-			* pSeer->dda.delta_distance.x;
+		pSeer->dda.distance.x = (pSeer->player.position.x - pCamera->map_x)
+			* pSeer->dda.scaling_factor.x;
 	}
 	else
 	{
 		pSeer->dda.step_x = 1;
-		pSeer->dda.side_distance.x = (pCamera->map_x + 1.0
-				- pSeer->player.position.x) * pSeer->dda.delta_distance.x;
+		pSeer->dda.distance.x = (pCamera->map_x + 1.0
+				- pSeer->player.position.x) * pSeer->dda.scaling_factor.x;
 	}
 	if (pCamera->direction.y < 0)
 	{
 		pSeer->dda.step_y = -1;
-		pSeer->dda.side_distance.y = (pSeer->player.position.y - pCamera->map_y)
-			* pSeer->dda.delta_distance.y;
+		pSeer->dda.distance.y = (pSeer->player.position.y - pCamera->map_y)
+			* pSeer->dda.scaling_factor.y;
 	}
 	else
 	{
 		pSeer->dda.step_y = 1;
-		pSeer->dda.side_distance.y = (pCamera->map_y + 1.0
-				- pSeer->player.position.y) * pSeer->dda.delta_distance.y;
+		pSeer->dda.distance.y = (pCamera->map_y + 1.0
+				- pSeer->player.position.y) * pSeer->dda.scaling_factor.y;
 	}
 }
 
@@ -45,15 +45,15 @@ void	dda(t_seer *pSeer, t_camera *pCamera, int *side)
 {
 	while (true)
 	{
-		if (pSeer->dda.side_distance.x < pSeer->dda.side_distance.y)
+		if (pSeer->dda.distance.x < pSeer->dda.distance.y)
 		{
-			pSeer->dda.side_distance.x += pSeer->dda.delta_distance.x;
+			pSeer->dda.distance.x += pSeer->dda.scaling_factor.x;
 			pCamera->map_x += pSeer->dda.step_x;
 			*side = HORIZONTAL;
 		}
 		else
 		{
-			pSeer->dda.side_distance.y += pSeer->dda.delta_distance.y;
+			pSeer->dda.distance.y += pSeer->dda.scaling_factor.y;
 			pCamera->map_y += pSeer->dda.step_y;
 			*side = VERTICAL;
 		}
@@ -70,7 +70,7 @@ void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
 		pCamera->wall_distance = fabs((pCamera->map_y - pSeer->player.position.y + (1 - pSeer->dda.step_y) / 2) / pCamera->direction.y);
 	if (pCamera->wall_distance == 0)
 		pCamera->wall_distance = 0.0001;
-	pSeer->vertline.height = (int)(SCREEN_HEIGHT / pCamera->wall_distance);
+	pSeer->vertline.height = SCREEN_HEIGHT / pCamera->wall_distance;
 	pSeer->vertline.start = -pSeer->vertline.height / 2 + SCREEN_HEIGHT / 2;
 	if (pSeer->vertline.start < 0)
 		pSeer->vertline.start = 0;
