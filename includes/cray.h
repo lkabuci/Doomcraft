@@ -159,7 +159,7 @@ void						mouse_move(t_seer *pSeer);
 void						init(t_seer *pSeer);
 void						position_direction(t_seer *pSeer, t_camera *pCamera,
 								int xPixel);
-void						calculate_offsets(t_seer *pSeer, t_camera *pCamera);
+void						calculate_initial_distance(t_seer *pSeer, t_camera *pCamera);
 void						dda(t_seer *pSeer, t_camera *pCamera, int *side);
 void						vertline(t_seer *pSeer, t_camera *pCamera,
 								int side);

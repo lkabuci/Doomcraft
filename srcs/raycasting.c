@@ -13,7 +13,7 @@ void	position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel)
 	pSeer->dda.scaling_factor.y = sqrt(1 + (pCamera->direction.x * pCamera->direction.x) / (pCamera->direction.y * pCamera->direction.y));
 }
 
-void	calculate_offsets(t_seer *pSeer, t_camera *pCamera)
+void	calculate_initial_distance(t_seer *pSeer, t_camera *pCamera)
 {
 	if (pCamera->direction.x < 0)
 	{
