@@ -160,13 +160,13 @@ void						init(t_seer *pSeer);
 void						position_direction(t_seer *pSeer, t_camera *pCamera,
 								int xPixel);
 void						calculate_initial_distance(t_seer *pSeer, t_camera *pCamera);
-void						dda(t_seer *pSeer, t_camera *pCamera, int *side);
+void						dda_loop(t_seer *pSeer, t_camera *pCamera, int *side);
 void						vertline(t_seer *pSeer, t_camera *pCamera,
 								int side);
 unsigned int				get_image_color(mlx_image_t *image, t_point p);
 void						set_texture_params(t_seer *pSeer, int xPixel);
 void						set_env(t_seer *pSeer);
 void						draw_3d_scene(t_seer *pSeer);
-void						fill_texture_buffer(t_seer *pSeer, int x,
+void						fill_texture_buffer(t_seer *pSeer, int xPixel,
 								int drawStart, int drawEnd);
 #endif // !CRAY_H

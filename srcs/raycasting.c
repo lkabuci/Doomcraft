@@ -13,6 +13,10 @@ void	position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel)
 	pSeer->dda.scaling_factor.y = sqrt(1 + (pCamera->direction.x * pCamera->direction.x) / (pCamera->direction.y * pCamera->direction.y));
 }
 
+/*
+	adding 1.0 to the player position
+	is to avoid the case where the player is on the grid.
+*/
 void	calculate_initial_distance(t_seer *pSeer, t_camera *pCamera)
 {
 	if (pCamera->direction.x < 0)
@@ -41,7 +45,7 @@ void	calculate_initial_distance(t_seer *pSeer, t_camera *pCamera)
 	}
 }
 
-void	dda(t_seer *pSeer, t_camera *pCamera, int *side)
+void	dda_loop(t_seer *pSeer, t_camera *pCamera, int *side)
 {
 	while (true)
 	{
@@ -62,6 +66,13 @@ void	dda(t_seer *pSeer, t_camera *pCamera, int *side)
 	}
 }
 
+/*
+	* ( 1 - step_x ) / 2 = 1 : if step_x = -1 and 0 : if step_x = 1
+		why?	because if step_x = -1, then the player is on the right side of the wall,
+				1 is already added in the calculation of the initial distance.
+	* mapX - playerX + (1 - stepX) / 2 is the number of square the player has to crossed in the X axis.
+	pCamera.direction is the ray direction vector so we can get the perpendicular wall distance.
+*/
 void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
 {
 	if (side == HORIZONTAL)
@@ -70,7 +81,7 @@ void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
 		pCamera->wall_distance = fabs((pCamera->map_y - pSeer->player.position.y + (1 - pSeer->dda.step_y) / 2) / pCamera->direction.y);
 	if (pCamera->wall_distance == 0)
 		pCamera->wall_distance = 0.0001;
-	pSeer->vertline.height = SCREEN_HEIGHT / pCamera->wall_distance;
+	pSeer->vertline.height = fabs(SCREEN_HEIGHT / pCamera->wall_distance);
 	pSeer->vertline.start = -pSeer->vertline.height / 2 + SCREEN_HEIGHT / 2;
 	if (pSeer->vertline.start < 0)
 		pSeer->vertline.start = 0;
