@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relkabou <relkabou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:25:34 by relkabou          #+#    #+#             */
-/*   Updated: 2023/10/16 18:25:35 by relkabou         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:35:25 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ void	position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel)
 		* pSeer->dda.iter;
 	pCamera->map_x = (int)pSeer->player.position.x;
 	pCamera->map_y = (int)pSeer->player.position.y;
-	pSeer->dda.scaling_factor.x = sqrt(1 + (pCamera->direction.y * pCamera->direction.y) / (pCamera->direction.x * pCamera->direction.x));
-	pSeer->dda.scaling_factor.y = sqrt(1 + (pCamera->direction.x * pCamera->direction.x) / (pCamera->direction.y * pCamera->direction.y));
+	pSeer->dda.scaling_factor.x = sqrt(1 + (pCamera->direction.y * \
+		pCamera->direction.y) / (pCamera->direction.x * pCamera->direction.x));
+	pSeer->dda.scaling_factor.y = sqrt(1 + (pCamera->direction.x * \
+		pCamera->direction.x) / (pCamera->direction.y * pCamera->direction.y));
 }
 
 /*
@@ -80,17 +82,25 @@ void	dda_loop(t_seer *pSeer, t_camera *pCamera, int *side)
 
 /*
 	* ( 1 - step_x ) / 2 = 1 : if step_x = -1 and 0 : if step_x = 1
-		why?	because if step_x = -1, then the player is on the right side of the wall,
+		why?	because if step_x = -1, then the player is on the right 
+				side of the wall,
 				1 is already added in the calculation of the initial distance.
-	* mapX - playerX + (1 - stepX) / 2 is the number of square the player has to crossed in the X axis.
-	pCamera.direction is the ray direction vector so we can get the perpendicular wall distance.
+	* mapX - playerX + (1 - stepX) / 2 is the number of square the player has
+				to crossed in the X axis.
+	pCamera.direction is the ray direction vector so we can get the
+		perpendicular wall distance.
 */
+
 void	vertline(t_seer *pSeer, t_camera *pCamera, int side)
 {
 	if (side == HORIZONTAL)
-		pCamera->wall_distance = fabs((pCamera->map_x - pSeer->player.position.x + (1 - pSeer->dda.step_x) / 2) / pCamera->direction.x);
+		pCamera->wall_distance = fabs((pCamera->map_x - \
+			pSeer->player.position.x + (1 - pSeer->dda.step_x) / 2) \
+			/pCamera->direction.x);
 	else
-		pCamera->wall_distance = fabs((pCamera->map_y - pSeer->player.position.y + (1 - pSeer->dda.step_y) / 2) / pCamera->direction.y);
+		pCamera->wall_distance = fabs((pCamera->map_y - \
+		pSeer->player.position.y + (1 - pSeer->dda.step_y) / 2) \
+		/ pCamera->direction.y);
 	if (pCamera->wall_distance == 0)
 		pCamera->wall_distance = 0.0001;
 	pSeer->vertline.height = fabs(SCREEN_HEIGHT / pCamera->wall_distance);

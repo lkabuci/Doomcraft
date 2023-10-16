@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: relkabou <relkabou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ayel-fil <ayel-fil@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 18:25:37 by relkabou          #+#    #+#             */
-/*   Updated: 2023/10/16 18:25:38 by relkabou         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:35:55 by ayel-fil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void	draw_3d_scene(t_seer *pSeer)
 	}
 }
 
-void	fill_texture_buffer(t_seer *pSeer, int xPixel, int drawStart, int drawEnd)
+void	fill_texture_buffer(t_seer *pSeer, int xPixel, int drawStart, \
+	int drawEnd)
 {
 	int		tex_y;
 	int		y;
