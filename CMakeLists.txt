@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25.1)
-project(cRay)
+project(doomcraft)
 set(CMAKE_C_STANDARD 99)
 
 # Set the path to the MLX42 library
@@ -43,20 +43,20 @@ set(SOURCES
 )
 
 # Create the executable target
-add_executable(cRay ${SOURCES})
+add_executable(doomcraft ${SOURCES})
 
 # Link the executable with the MLX42 library
-target_link_libraries(cRay PRIVATE ${MLX_LIB})
+target_link_libraries(doomcraft PRIVATE ${MLX_LIB})
 
 # Optionally, link other libraries depending on the OS
 if(UNIX AND NOT APPLE)
-    target_link_libraries(cRay PRIVATE dl glfw pthread m)
+    target_link_libraries(doomcraft PRIVATE dl glfw pthread m)
 else()
-    target_link_libraries(cRay PRIVATE glfw)
+    target_link_libraries(doomcraft PRIVATE glfw)
 endif()
 
 # Add any additional include directories if needed
-target_include_directories(cRay PRIVATE includes MLX42/include/MLX42)
+target_include_directories(doomcraft PRIVATE includes MLX42/include/MLX42)
 
 # Set compiler options
-target_compile_options(cRay PRIVATE -Wall -Wextra -Werror)
+target_compile_options(doomcraft PRIVATE -Wall -Wextra -Werror)

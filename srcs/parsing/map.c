@@ -1,4 +1,4 @@
-#include "../../includes/cray.h"
+#include "../../includes/doomcraft.h"
 
 void	get_map_dimensions(t_map_info *pInfo)
 {

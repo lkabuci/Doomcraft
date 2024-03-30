@@ -1,4 +1,4 @@
-#include "../includes/cray.h"
+#include "../includes/doomcraft.h"
 
 static bool	can_move(char block);
 

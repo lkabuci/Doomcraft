@@ -1,6 +1,8 @@
 # Program Binaries
-cRay
+doomcraft
 cub3D
+build/
+.idea/
 
 # Cmake
 cmake-build-debug/

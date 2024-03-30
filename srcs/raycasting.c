@@ -1,4 +1,4 @@
-#include "../includes/cray.h"
+#include "../includes/doomcraft.h"
 
 void	position_direction(t_seer *pSeer, t_camera *pCamera, int xPixel)
 {

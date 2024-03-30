@@ -2,7 +2,7 @@
 // Created by redone on 7/29/23.
 //
 
-#include "../../includes/cray.h"
+#include "../../includes/doomcraft.h"
 
 /*
  * 1 -> only 6 possible characters (0, 1, N, S, E, W) and \0

@@ -24,9 +24,9 @@ BIN_DIR     = bin/
 OBJS        = $(SRCS:%.c=$(BIN_DIR)%.o)
 OBJS_DIRS   = $(dir $(OBJS))
 
-INCLUDES	=	includes/libft.h includes/cray.h
+INCLUDES	=	includes/libft.h includes/doomcraft.h
 
-NAME		=	cRay
+NAME		=	doomcraft
 
 all: $(NAME)
 

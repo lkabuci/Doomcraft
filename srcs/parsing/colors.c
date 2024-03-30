@@ -1,4 +1,4 @@
-#include "../../includes/cray.h"
+#include "../../includes/doomcraft.h"
 
 long	get_rgb(char *value)
 {

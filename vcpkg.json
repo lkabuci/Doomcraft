@@ -1,5 +1,5 @@
 {
-  "name" : "cray",
+  "name" : "doomcraft",
   "version-string" : "1.0.0",
   "builtin-baseline" : "ccd2e8b4b9e76ba8883aede0b89225099d805e01",
   "dependencies" : [ {

@@ -1,4 +1,4 @@
-#include "../includes/cray.h"
+#include "../includes/doomcraft.h"
 
 unsigned int	get_image_color(mlx_image_t *image, t_point p)
 {

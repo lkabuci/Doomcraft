@@ -1,4 +1,4 @@
-#include "../includes/cray.h"
+#include "../includes/doomcraft.h"
 
 void	initialize_all_variables(t_seer *pSeer);
 

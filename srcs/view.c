@@ -1,4 +1,4 @@
-#include "../includes/cray.h"
+#include "../includes/doomcraft.h"
 
 void	change_to_left(t_seer *pSeer, double rotSpeed)
 {

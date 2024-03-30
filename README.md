@@ -1,8 +1,8 @@
 ## About:
-**cRay** is a raycasting game engine written in C language that uses [the Digital Differential Analysis](https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)) aka the "DDA" algorithm.
+**doomcraft** is a raycasting game engine written in C language that uses [the Digital Differential Analysis](https://en.wikipedia.org/wiki/Digital_differential_analyzer_(graphics_algorithm)) aka the "DDA" algorithm.
 
 ## Overview:
-![Screenshot from 2023-09-12 00-17-14](https://github.com/kaboussi/cRay/assets/95357302/c037377f-db38-49d5-9048-3c1c53a7b504)
+![Screenshot from 2023-09-12 00-17-14](https://github.com/kaboussi/cray/assets/95357302/c037377f-db38-49d5-9048-3c1c53a7b504)
 
 
 ## Dependencies:
@@ -20,25 +20,32 @@ The [MLX42](https://github.com/codam-coding-college/MLX42) is a minimal graphica
 
 ## Setup:
 ```bash
-➜  ~ git clone https://github.com/https://github.com/kaboussi/cRay
-➜  ~ cd cRay/MLX42
-➜  ~ cmake -B build
-➜  ~ cmake --build build -j4
+➜  ~ git clone https://github.com/lkabuci/Doomcraft && cd Doomcraft
+➜  ~ (cd MLX42 && cmake -B build && cmake --build build -j4)
 ```
 
 ## Compile and run:
 * Using Cmake
 ```bash
-➜  ~ cmake -B cmake-build-debug
-➜  ~ cd cmake-build-debug
-➜  ~ make -C cmake-build-debug
-➜  ~ ./cmake-build-debug/cRay assets/maps/map.cub
+➜  ~ cmake -B build
+➜  ~ make -C build
+➜  ~ ./build/doomcraft assets/maps/map.cub
 ```
 
 * Using Makfile
 ```bash
 ➜  ~ make
-➜  ~ ./cRay assets/maps/map.cub
+➜  ~ ./doomcraft assets/maps/map.cub
+```
+
+* Oneline setup
+```bash
+git clone https://github.com/lkabuci/Doomcraft &&\
+cd Doomcraft && \
+(cd MLX42 && cmake -B build && cmake --build build -j4) &&\
+cmake -B build &&\
+make -C build &&\
+./build/doomcraft assets/maps/map.cub
 ```
 
 ### Resources:

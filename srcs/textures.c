@@ -1,4 +1,4 @@
-#include "../includes/cray.h"
+#include "../includes/doomcraft.h"
 
 // the floor is used to get the value between 0 and 1
 void	set_texture_params(t_seer *pSeer, int xPixel)

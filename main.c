@@ -2,7 +2,7 @@
 // Created by redone on 7/27/23.
 //
 
-#include "includes/cray.h"
+#include "includes/doomcraft.h"
 
 int	main(int argc, const char *argv[])
 {

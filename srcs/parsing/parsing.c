@@ -2,7 +2,7 @@
 // Created by redone on 7/27/23.
 //
 
-#include "../../includes/cray.h"
+#include "../../includes/doomcraft.h"
 
 void			parse_elements(t_map_info *info);
 void			fill_elements(mlx_t *mlx, t_map_info *pInfo, char *key,

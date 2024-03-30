@@ -2,7 +2,7 @@
 // Created by redone on 7/28/23.
 //
 
-#include "../../includes/cray.h"
+#include "../../includes/doomcraft.h"
 
 static bool	is_all_spaces(const char *line);
 
